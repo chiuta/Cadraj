@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Cadraj — pentru TikTok, fără cont</title>
+<style>
+:root{
+  --bg:#15130f; --bg-raised:#1c1913; --bg-card:#221e17;
+  --border:#332e24; --text:#f0ebe0; --text-dim:#9a9182; --text-faint:#7d7566;
+  --accent:#e8632c; --cool:#45d9c7; --danger:#e2585c;
+  --danger-soft:rgba(226,88,92,.12);
+  --radius:4px;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Roboto Mono', Consolas, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+}
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family:var(--sans); }
+body.no-scroll{ overflow:hidden; }
+button{ font-family:inherit; }
+h1,p{ margin:0; }
+a{ color:var(--cool); }
+@media (prefers-reduced-motion: reduce){ *{ transition:none!important; animation:none!important; } }
+
+.leader{
+  height:14px;
+  background-color:var(--bg-raised);
+  background-image: radial-gradient(circle, var(--bg-card) 2px, transparent 2.2px);
+  background-size: 20px 14px;
+  background-position: center;
+}
+.masthead{ max-width:720px; margin:0 auto; padding:2rem 1.4rem 1rem; }
+.masthead__label{ font-family:var(--mono); font-size:1.5rem; font-weight:700; letter-spacing:.03em; }
+.masthead__sub{ display:block; font-family:var(--mono); font-size:.72rem; color:var(--accent); letter-spacing:.08em; margin-top:.35rem; text-transform:uppercase; }
+.masthead__tagline{ margin-top:.9rem; color:var(--text-dim); max-width:62ch; line-height:1.55; }
+.lang-switch{ display:flex; gap:.4rem; flex-wrap:wrap; margin-top:1.1rem; }
+.lang-switch button{
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.06em; text-transform:uppercase;
+  background:transparent; border:1px solid var(--border); color:var(--text-faint);
+  padding:.25rem .55rem; border-radius:var(--radius); cursor:pointer;
+}
+.lang-switch button:hover{ border-color:var(--cool); color:var(--cool); }
+.lang-switch button[aria-current="true"]{ border-color:var(--accent); color:var(--accent); }
+
+.panel{ max-width:720px; margin:0 auto 1rem; padding:1rem 1.4rem; }
+.field-label{ display:block; font-family:var(--mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-dim); margin-bottom:.5rem; }
+.field-row{ display:flex; gap:.5rem; flex-wrap:wrap; }
+.field-row input[type="text"]{
+  flex:1 1 240px; background:var(--bg-raised); border:1px solid var(--border); border-radius:var(--radius);
+  color:var(--text); padding:.65rem .8rem; font-family:var(--sans); font-size:.9rem;
+}
+.hint{ margin-top:.5rem; font-size:.8rem; min-height:1.2em; }
+.hint--error{ color:var(--danger); }
+.hint--success{ color:var(--cool); }
+
+.btn{
+  font-family:var(--sans); font-size:.85rem; font-weight:600; padding:.65rem 1.1rem;
+  border-radius:var(--radius); border:1px solid transparent; cursor:pointer; white-space:nowrap;
+}
+.btn-primary{ background:var(--accent); color:#1a1510; }
+.btn-primary:hover{ background:#f27339; }
+.btn-secondary{ background:transparent; border-color:var(--border); color:var(--text); }
+.btn-secondary:hover{ border-color:var(--cool); color:var(--cool); }
+.btn-danger{ background:transparent; border-color:var(--danger); color:var(--danger); }
+.btn-danger:hover{ background:var(--danger-soft); }
+.btn-sm{ padding:.35rem .65rem; font-size:.72rem; }
+:focus-visible{ outline:2px solid var(--cool); outline-offset:2px; }
+
+.collections{ min-height:20vh; }
+.empty-state{ max-width:720px; margin:3rem auto; text-align:center; color:var(--text-dim); padding:0 1.4rem; }
+.empty-state p:first-child{ font-family:var(--mono); color:var(--text); font-size:1rem; margin-bottom:.4rem; }
+.empty-state__sub{ font-size:.85rem; }
+
+.collection{ max-width:900px; margin:0 auto 2.2rem; padding:0 1.4rem; }
+.collection__header{
+  display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:.6rem;
+  border-bottom:1px solid var(--border); padding-bottom:.6rem; margin-bottom:.8rem;
+}
+.collection__id{ display:flex; align-items:baseline; gap:.7rem; flex-wrap:wrap; }
+.collection__title{ font-family:var(--mono); font-size:1rem; }
+.collection__count{ font-family:var(--mono); font-size:.68rem; color:var(--text-faint); }
+.collection__actions{ display:flex; gap:.5rem; }
+.collection__grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(118px,1fr)); gap:.6rem; }
+
+.frame{ position:relative; aspect-ratio:9/16; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+.frame::before,.frame::after{
+  content:''; position:absolute; top:0; bottom:0; width:7px;
+  background-image: radial-gradient(circle, var(--bg) 1.4px, transparent 1.6px);
+  background-size:7px 11px; background-position:center top; background-repeat:repeat-y; opacity:.9;
+}
+.frame::before{ left:0; } .frame::after{ right:0; }
+.frame__play-area{
+  position:absolute; inset:0; width:100%; height:100%; background:transparent; border:none; color:var(--text);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.4rem; cursor:pointer; padding:0 12px;
+}
+.frame__number{ position:absolute; top:6px; left:10px; font-family:var(--mono); font-size:.63rem; color:var(--text-faint); }
+.frame__play-icon{ font-size:1.3rem; color:var(--accent); transition:transform .15s ease; }
+.frame__play-area:hover .frame__play-icon{ transform:scale(1.15); }
+.frame__id{ font-family:var(--mono); font-size:.6rem; color:var(--text-faint); }
+.frame__remove{
+  position:absolute; top:4px; right:4px; width:20px; height:20px; border-radius:50%;
+  border:1px solid var(--border); background:var(--bg-raised); color:var(--text-dim); font-size:.65rem;
+  cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0;
+}
+.frame__remove:hover{ border-color:var(--danger); color:var(--danger); }
+.frame__kind-badge{
+  position:absolute; bottom:6px; right:6px; width:20px; height:20px; border-radius:50%;
+  background:rgba(0,0,0,.55); font-size:.72rem; display:flex; align-items:center; justify-content:center;
+  pointer-events:none;
+}
+.frame-card{ display:flex; flex-direction:column; gap:.35rem; }
+.frame__note{
+  width:100%; background:transparent; border:none; border-bottom:1px dashed var(--border);
+  color:var(--text-dim); font-family:var(--sans); font-size:.68rem; font-style:italic;
+  padding:.15rem .1rem;
+}
+.frame__note::placeholder{ color:var(--text-faint); font-style:italic; }
+.frame__note:focus{ outline:none; border-bottom-color:var(--cool); color:var(--text); }
+.frame__note:focus-visible{ outline:1px solid var(--cool); outline-offset:1px; border-radius:2px; }
+
+.tools-panel{ display:flex; gap:.6rem; flex-wrap:wrap; }
+
+.info-panel{ max-width:720px; margin:1.4rem auto 2.4rem; padding:0 1.4rem; color:var(--text-dim); font-size:.85rem; line-height:1.6; }
+.info-panel summary{ cursor:pointer; font-family:var(--mono); font-size:.78rem; color:var(--cool); padding:.6rem 0; }
+.info-panel__body{ padding-top:.6rem; }
+.info-panel__body p + p{ margin-top:.7rem; }
+
+footer.foot{ text-align:center; color:var(--text-faint); font-size:.72rem; font-family:var(--mono); padding:1.5rem 1rem 3rem; }
+
+.lightbox{ position:fixed; inset:0; background:rgba(10,9,7,.94); display:flex; align-items:center; justify-content:center; z-index:100; padding:2rem 1rem; }
+.lightbox[hidden]{ display:none; }
+.lightbox__inner{ position:relative; display:flex; flex-direction:column; align-items:center; gap:.8rem; max-width:380px; width:100%; }
+.lightbox__frame{ width:100%; max-width:340px; aspect-ratio:9/16; background:var(--bg-card); border-radius:var(--radius); overflow:hidden; }
+.lightbox__frame iframe{ width:100%; height:100%; border:none; display:block; }
+.lightbox__close{ position:absolute; top:-2.6rem; right:0; background:transparent; border:1px solid var(--border); color:var(--text); width:36px; height:36px; border-radius:50%; cursor:pointer; font-size:1rem; }
+.lightbox__nav{ position:fixed; top:50%; transform:translateY(-50%); background:var(--bg-raised); border:1px solid var(--border); color:var(--text); width:44px; height:44px; border-radius:50%; cursor:pointer; font-size:1.3rem; }
+.lightbox__nav--prev{ left:1rem; } .lightbox__nav--next{ right:1rem; }
+.lightbox__meta{ display:flex; flex-direction:column; align-items:center; gap:.3rem; font-family:var(--mono); font-size:.72rem; color:var(--text-dim); text-align:center; }
+.lightbox__note{ font-family:var(--sans); font-style:italic; color:var(--text); font-size:.8rem; max-width:320px; }
+.lightbox__hint{ font-family:var(--sans); font-style:normal; color:var(--accent); font-size:.68rem; max-width:300px; line-height:1.4; }
+
+@media (max-width:480px){
+  .masthead{ padding:1.4rem 1rem .8rem; }
+  .panel{ padding:.8rem 1rem; }
+  .collection{ padding:0 1rem; }
+  .lightbox__nav{ width:38px; height:38px; font-size:1.1rem; }
+  .lightbox__nav--prev{ left:.4rem; } .lightbox__nav--next{ right:.4rem; }
+}
+</style>
+</head>
+<body>
+<div class="leader"></div>
+<header class="masthead">
+  <h1 class="masthead__label">Cadraj<span class="masthead__sub" data-i18n="titleSub">pentru TikTok, fără cont</span></h1>
+  <p class="masthead__tagline" data-i18n="tagline">Aduni manual clipurile care te interesează de la un autor, apoi le developezi într-un player oficial TikTok — fără cont, fără feed algoritmic, salvate doar în acest browser.</p>
+  <nav class="lang-switch" id="lang-switch" aria-label="Limbă / Language">
+    <button type="button" data-lang="ro">RO</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="it">IT</button>
+    <button type="button" data-lang="es">ES</button>
+    <button type="button" data-lang="pt">PT</button>
+    <button type="button" data-lang="de">DE</button>
+  </nav>
+</header>
+
+<section class="panel">
+  <form id="add-form">
+    <label class="field-label" for="url-input" data-i18n="addLabel">Link către un clip TikTok</label>
+    <div class="field-row">
+      <input type="text" id="url-input" data-i18n-placeholder="addPlaceholder" placeholder="https://www.tiktok.com/@autor/video/...">
+      <button type="submit" class="btn btn-primary" data-i18n="addButton">Adaugă</button>
+    </div>
+    <p class="hint" id="add-hint"></p>
+  </form>
+</section>
+
+<section class="panel">
+  <form id="profile-form">
+    <label class="field-label" for="profile-input" data-i18n="profileLabel">Deschide un profil direct pe TikTok (tab nou)</label>
+    <div class="field-row">
+      <input type="text" id="profile-input" data-i18n-placeholder="profilePlaceholder" placeholder="@autor">
+      <button type="submit" class="btn btn-secondary" data-i18n="profileButton">Deschide profilul ↗</button>
+    </div>
+  </form>
+</section>
+
+<section class="panel" id="filter-panel" hidden>
+  <label class="field-label" for="filter-input" data-i18n="filterLabel">Caută în colecții</label>
+  <input type="text" id="filter-input" data-i18n-placeholder="filterPlaceholder" placeholder="autor sau cuvinte din notițe…" style="width:100%;">
+</section>
+
+<main class="collections" id="collections"></main>
+
+<section class="panel tools-panel">
+  <button type="button" class="btn btn-secondary btn-sm" id="export-btn" data-i18n="exportButton">Exportă (JSON)</button>
+  <button type="button" class="btn btn-secondary btn-sm" id="import-btn" data-i18n="importButton">Importă</button>
+  <input type="file" id="import-file" accept="application/json" hidden>
+  <button type="button" class="btn btn-danger btn-sm" id="clear-btn" data-i18n="clearButton">Șterge tot</button>
+</section>
+
+<details class="info-panel">
+  <summary data-i18n="infoSummary">Ce poate și ce nu poate face acest instrument</summary>
+  <div class="info-panel__body">
+    <p data-i18n="infoP1">Nu adună și nu enumeră automat clipurile unui profil. Ca fișier HTML fără server propriu, nu poate ocoli semnăturile criptografice și limitele de rată cu care TikTok protejează acest tip de acces automatizat — iar o încercare de a le ocoli le-ar încălca termenii lor de utilizare.</p>
+    <p data-i18n="infoP2">Ce face: developează, prin playerul oficial de embed al TikTok, clipurile pe care tu le adaugi manual — după ce le găsești navigând profilul într-un tab separat. Nu descarcă fișiere video. E o coală de contact personală, curatoriată de tine, nu un robot de recoltat conținut.</p>
+    <p data-i18n="infoP3">Tot ce salvezi — linkurile adăugate — rămâne local, în acest browser. Nimic nu pleacă spre vreun server.</p>
+  </div>
+</details>
+
+<footer class="foot" data-i18n="footerTag">fără cont · fără telemetrie · fără server</footer>
+
+<div class="lightbox" id="lightbox" hidden>
+  <div class="lightbox__inner">
+    <button type="button" class="lightbox__close" id="lightbox-close" data-i18n-aria="lightboxCloseAria" aria-label="Închide">✕</button>
+    <div class="lightbox__frame" id="lightbox-frame-container"></div>
+    <div class="lightbox__meta" id="lightbox-meta"></div>
+  </div>
+  <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" data-i18n-aria="lightboxPrevAria" aria-label="Cadrul anterior">‹</button>
+  <button type="button" class="lightbox__nav lightbox__nav--next" id="lightbox-next" data-i18n-aria="lightboxNextAria" aria-label="Cadrul următor">›</button>
+</div>
+
+<script>
+(function(){
+'use strict';
+var LANG_UI = {
+ro: {
+  pageTitle: "Cadraj — pentru TikTok, fără cont",
+  titleSub: "pentru TikTok, fără cont",
+  tagline: "Aduni manual clipurile care te interesează de la un autor, apoi le developezi într-un player oficial TikTok — fără cont, fără feed algoritmic, salvate doar în acest browser.",
+  addLabel: "Link către un clip TikTok",
+  addPlaceholder: "https://www.tiktok.com/@autor/video/...",
+  addButton: "Adaugă",
+  profileLabel: "Deschide un profil direct pe TikTok (tab nou)",
+  profilePlaceholder: "@autor",
+  profileButton: "Deschide profilul ↗",
+  filterLabel: "Caută în colecții",
+  filterPlaceholder: "autor sau cuvinte din notițe…",
+  exportButton: "Exportă (JSON)",
+  importButton: "Importă",
+  clearButton: "Șterge tot",
+  infoSummary: "Ce poate și ce nu poate face acest instrument",
+  infoP1: "Nu adună și nu enumeră automat clipurile unui profil. Ca fișier HTML fără server propriu, nu poate ocoli semnăturile criptografice și limitele de rată cu care TikTok protejează acest tip de acces automatizat — iar o încercare de a le ocoli le-ar încălca termenii lor de utilizare.",
+  infoP2: "Ce face: developează, prin playerul oficial de embed al TikTok, clipurile pe care tu le adaugi manual — după ce le găsești navigând profilul într-un tab separat. Nu descarcă fișiere video. E o coală de contact personală, curatoriată de tine, nu un robot de recoltat conținut.",
+  infoP3: "Tot ce salvezi — linkurile adăugate — rămâne local, în acest browser. Nimic nu pleacă spre vreun server.",
+  footerTag: "fără cont · fără telemetrie · fără server",
+  lightboxCloseAria: "Închide",
+  lightboxPrevAria: "Cadrul anterior",
+  lightboxNextAria: "Cadrul următor",
+  emptyTitle: "Nicio coală încă.",
+  emptySub: "Adaugă primul clip mai sus — fiecare autor primește propria coală de contact.",
+  noMatchTitle: "Nicio coală nu se potrivește.",
+  noMatchSub: "Încearcă alt autor sau alt cuvânt din notițe.",
+  hintEmpty: "Lipește mai întâi un link.",
+  hintShortlink: "E un link scurtat. Deschide-l o dată într-un tab nou ca să obții linkul complet (.../@autor/video/...), apoi lipește-l aici.",
+  hintInvalid: "Nu recunosc linkul. Are nevoie de formatul .../@autor/video/ID.",
+  hintDuplicate: "Clipul e deja în colecția lui @{user}.",
+  hintAdded: "Cadru adăugat la coala lui @{user}.",
+  frameCountOne: "cadru",
+  frameCountOther: "cadre",
+  profileOpenButton: "Profil ↗",
+  removeCollectionButton: "Elimină coala",
+  confirmRemoveCollection: "Elimini toată coala lui @{user}?",
+  framePlayAria: "Redă cadrul {n} de la @{user}",
+  frameRemoveAria: "Elimină cadrul {n}",
+  photoBadgeTitle: "Postare foto",
+  notePlaceholder: "notă…",
+  noteAria: "Notă pentru cadrul {n} de la @{user}",
+  lightboxMeta: "@{user} · cadrul {current}/{total}",
+  photoHint: "Postare foto — playerul TikTok e gândit pentru clipuri video. Dacă nu se încarcă, deschide-o direct mai jos.",
+  openOnTiktok: "Deschide pe TikTok ↗",
+  importInvalidAlert: "Fișierul nu pare a fi un export valid.",
+  confirmClearAll: "Ștergi toată colecția salvată local? Nu se poate anula.",
+  iframeTitle: "Player TikTok"
+},
+en: {
+  pageTitle: "Cadraj — for TikTok, without an account",
+  titleSub: "for TikTok, without an account",
+  tagline: "Manually collect the clips you care about from a creator, then develop them through TikTok's official player — no account, no algorithmic feed, saved only in this browser.",
+  addLabel: "Link to a TikTok clip",
+  addPlaceholder: "https://www.tiktok.com/@author/video/...",
+  addButton: "Add",
+  profileLabel: "Open a profile directly on TikTok (new tab)",
+  profilePlaceholder: "@author",
+  profileButton: "Open profile ↗",
+  filterLabel: "Search your collections",
+  filterPlaceholder: "creator or words from notes…",
+  exportButton: "Export (JSON)",
+  importButton: "Import",
+  clearButton: "Clear everything",
+  infoSummary: "What this tool can and can't do",
+  infoP1: "It doesn't collect or list a profile's clips automatically. As a server-less HTML file, it can't bypass the cryptographic signatures and rate limits TikTok uses to protect against this kind of automated access — and trying to would breach their terms of use.",
+  infoP2: "What it does: it develops, through TikTok's official embed player, the clips you add manually — after finding them by browsing the profile in a separate tab. It doesn't download video files. It's a personal contact sheet, curated by you, not a content-harvesting bot.",
+  infoP3: "Everything you save — the links you add — stays local, in this browser. Nothing is sent to any server.",
+  footerTag: "no account · no telemetry · no server",
+  lightboxCloseAria: "Close",
+  lightboxPrevAria: "Previous frame",
+  lightboxNextAria: "Next frame",
+  emptyTitle: "No contact sheet yet.",
+  emptySub: "Add your first clip above — every creator gets their own contact sheet.",
+  noMatchTitle: "No contact sheet matches.",
+  noMatchSub: "Try a different creator or a different word from your notes.",
+  hintEmpty: "Paste a link first.",
+  hintShortlink: "That's a shortened link. Open it once in a new tab to get the full link (.../@author/video/...), then paste that here.",
+  hintInvalid: "I don't recognise that link. It needs the .../@author/video/ID format.",
+  hintDuplicate: "That clip is already in @{user}'s collection.",
+  hintAdded: "Frame added to @{user}'s contact sheet.",
+  frameCountOne: "frame",
+  frameCountOther: "frames",
+  profileOpenButton: "Profile ↗",
+  removeCollectionButton: "Remove sheet",
+  confirmRemoveCollection: "Remove @{user}'s whole contact sheet?",
+  framePlayAria: "Play frame {n} from @{user}",
+  frameRemoveAria: "Remove frame {n}",
+  photoBadgeTitle: "Photo post",
+  notePlaceholder: "note…",
+  noteAria: "Note for frame {n} from @{user}",
+  lightboxMeta: "@{user} · frame {current}/{total}",
+  photoHint: "Photo post — TikTok's player is built for video clips. If it doesn't load, open it directly below.",
+  openOnTiktok: "Open on TikTok ↗",
+  importInvalidAlert: "That file doesn't look like a valid export.",
+  confirmClearAll: "Delete the whole collection saved locally? This can't be undone.",
+  iframeTitle: "TikTok player"
+},
+fr: {
+  pageTitle: "Cadraj — pour TikTok, sans compte",
+  titleSub: "pour TikTok, sans compte",
+  tagline: "Rassemble manuellement les clips qui t'intéressent chez un créateur, puis développe-les via le lecteur officiel de TikTok — sans compte, sans fil algorithmique, sauvegardés uniquement dans ce navigateur.",
+  addLabel: "Lien vers un clip TikTok",
+  addPlaceholder: "https://www.tiktok.com/@auteur/video/...",
+  addButton: "Ajouter",
+  profileLabel: "Ouvrir un profil directement sur TikTok (nouvel onglet)",
+  profilePlaceholder: "@auteur",
+  profileButton: "Ouvrir le profil ↗",
+  filterLabel: "Rechercher dans les collections",
+  filterPlaceholder: "créateur ou mots d'une note…",
+  exportButton: "Exporter (JSON)",
+  importButton: "Importer",
+  clearButton: "Tout effacer",
+  infoSummary: "Ce que cet outil peut et ne peut pas faire",
+  infoP1: "Il ne recueille ni ne liste automatiquement les clips d'un profil. En tant que fichier HTML sans serveur propre, il ne peut pas contourner les signatures cryptographiques ni les limites de débit par lesquelles TikTok protège ce type d'accès automatisé — et tenter de le faire enfreindrait leurs conditions d'utilisation.",
+  infoP2: "Ce qu'il fait : il développe, via le lecteur d'intégration officiel de TikTok, les clips que tu ajoutes toi-même — après les avoir trouvés en parcourant le profil dans un onglet séparé. Il ne télécharge aucun fichier vidéo. C'est une planche contact personnelle, que tu constitues toi-même, pas un robot de collecte de contenu.",
+  infoP3: "Tout ce que tu enregistres — les liens ajoutés — reste local, dans ce navigateur. Rien n'est envoyé à un serveur quelconque.",
+  footerTag: "sans compte · sans télémétrie · sans serveur",
+  lightboxCloseAria: "Fermer",
+  lightboxPrevAria: "Image précédente",
+  lightboxNextAria: "Image suivante",
+  emptyTitle: "Encore aucune planche contact.",
+  emptySub: "Ajoute ton premier clip ci-dessus — chaque créateur reçoit sa propre planche contact.",
+  noMatchTitle: "Aucune planche contact ne correspond.",
+  noMatchSub: "Essaie un autre créateur ou un autre mot tiré des notes.",
+  hintEmpty: "Colle d'abord un lien.",
+  hintShortlink: "C'est un lien raccourci. Ouvre-le une fois dans un nouvel onglet pour obtenir le lien complet (.../@auteur/video/...), puis colle-le ici.",
+  hintInvalid: "Je ne reconnais pas ce lien. Il doit avoir le format .../@auteur/video/ID.",
+  hintDuplicate: "Ce clip est déjà dans la collection de @{user}.",
+  hintAdded: "Image ajoutée à la planche contact de @{user}.",
+  frameCountOne: "image",
+  frameCountOther: "images",
+  profileOpenButton: "Profil ↗",
+  removeCollectionButton: "Supprimer la planche",
+  confirmRemoveCollection: "Supprimer toute la planche contact de @{user} ?",
+  framePlayAria: "Lire l'image {n} de @{user}",
+  frameRemoveAria: "Supprimer l'image {n}",
+  photoBadgeTitle: "Publication photo",
+  notePlaceholder: "note…",
+  noteAria: "Note pour l'image {n} de @{user}",
+  lightboxMeta: "@{user} · image {current}/{total}",
+  photoHint: "Publication photo — le lecteur TikTok est conçu pour les clips vidéo. S'il ne se charge pas, ouvre-la directement ci-dessous.",
+  openOnTiktok: "Ouvrir sur TikTok ↗",
+  importInvalidAlert: "Ce fichier ne ressemble pas à un export valide.",
+  confirmClearAll: "Supprimer toute la collection enregistrée localement ? Cette action est irréversible.",
+  iframeTitle: "Lecteur TikTok"
+},
+it: {
+  pageTitle: "Cadraj — per TikTok, senza account",
+  titleSub: "per TikTok, senza account",
+  tagline: "Raccogli manualmente i clip che ti interessano di un autore, poi li sviluppi tramite il player ufficiale di TikTok — senza account, senza feed algoritmico, salvati solo in questo browser.",
+  addLabel: "Link a un clip TikTok",
+  addPlaceholder: "https://www.tiktok.com/@autore/video/...",
+  addButton: "Aggiungi",
+  profileLabel: "Apri un profilo direttamente su TikTok (nuova scheda)",
+  profilePlaceholder: "@autore",
+  profileButton: "Apri il profilo ↗",
+  filterLabel: "Cerca nelle collezioni",
+  filterPlaceholder: "autore o parole dalle note…",
+  exportButton: "Esporta (JSON)",
+  importButton: "Importa",
+  clearButton: "Cancella tutto",
+  infoSummary: "Cosa può e cosa non può fare questo strumento",
+  infoP1: "Non raccoglie né elenca automaticamente i clip di un profilo. Essendo un file HTML senza un proprio server, non può aggirare le firme crittografiche né i limiti di frequenza con cui TikTok protegge questo tipo di accesso automatizzato — e tentare di farlo violerebbe i loro termini di utilizzo.",
+  infoP2: "Cosa fa: sviluppa, tramite il player di embed ufficiale di TikTok, i clip che aggiungi tu manualmente — dopo averli trovati sfogliando il profilo in una scheda separata. Non scarica file video. È un provino a contatto personale, curato da te, non un bot che raccoglie contenuti.",
+  infoP3: "Tutto ciò che salvi — i link aggiunti — resta locale, in questo browser. Niente viene inviato a un server.",
+  footerTag: "senza account · senza telemetria · senza server",
+  lightboxCloseAria: "Chiudi",
+  lightboxPrevAria: "Fotogramma precedente",
+  lightboxNextAria: "Fotogramma successivo",
+  emptyTitle: "Ancora nessun provino.",
+  emptySub: "Aggiungi il tuo primo clip qui sopra — ogni autore riceve il proprio provino a contatto.",
+  noMatchTitle: "Nessun provino corrisponde.",
+  noMatchSub: "Prova un altro autore o un'altra parola dalle note.",
+  hintEmpty: "Incolla prima un link.",
+  hintShortlink: "È un link abbreviato. Aprilo una volta in una nuova scheda per ottenere il link completo (.../@autore/video/...), poi incollalo qui.",
+  hintInvalid: "Non riconosco questo link. Deve avere il formato .../@autore/video/ID.",
+  hintDuplicate: "Questo clip è già nella collezione di @{user}.",
+  hintAdded: "Fotogramma aggiunto al provino di @{user}.",
+  frameCountOne: "fotogramma",
+  frameCountOther: "fotogrammi",
+  profileOpenButton: "Profilo ↗",
+  removeCollectionButton: "Rimuovi il provino",
+  confirmRemoveCollection: "Rimuovere l'intero provino a contatto di @{user}?",
+  framePlayAria: "Riproduci il fotogramma {n} di @{user}",
+  frameRemoveAria: "Rimuovi il fotogramma {n}",
+  photoBadgeTitle: "Post fotografico",
+  notePlaceholder: "nota…",
+  noteAria: "Nota per il fotogramma {n} di @{user}",
+  lightboxMeta: "@{user} · fotogramma {current}/{total}",
+  photoHint: "Post fotografico — il player di TikTok è pensato per i clip video. Se non si carica, aprilo direttamente qui sotto.",
+  openOnTiktok: "Apri su TikTok ↗",
+  importInvalidAlert: "Questo file non sembra un export valido.",
+  confirmClearAll: "Cancellare l'intera collezione salvata localmente? Non si può annullare.",
+  iframeTitle: "Player TikTok"
+},
+es: {
+  pageTitle: "Cadraj — para TikTok, sin cuenta",
+  titleSub: "para TikTok, sin cuenta",
+  tagline: "Reúne manualmente los clips que te interesan de un autor y luego revélalos con el reproductor oficial de TikTok — sin cuenta, sin feed algorítmico, guardados solo en este navegador.",
+  addLabel: "Enlace a un clip de TikTok",
+  addPlaceholder: "https://www.tiktok.com/@autor/video/...",
+  addButton: "Añadir",
+  profileLabel: "Abrir un perfil directamente en TikTok (pestaña nueva)",
+  profilePlaceholder: "@autor",
+  profileButton: "Abrir perfil ↗",
+  filterLabel: "Buscar en las colecciones",
+  filterPlaceholder: "autor o palabras de las notas…",
+  exportButton: "Exportar (JSON)",
+  importButton: "Importar",
+  clearButton: "Borrar todo",
+  infoSummary: "Qué puede y qué no puede hacer esta herramienta",
+  infoP1: "No recopila ni lista automáticamente los clips de un perfil. Al ser un archivo HTML sin servidor propio, no puede eludir las firmas criptográficas ni los límites de frecuencia con los que TikTok protege este tipo de acceso automatizado — e intentar eludirlos incumpliría sus términos de uso.",
+  infoP2: "Qué hace: revela, mediante el reproductor de inserción oficial de TikTok, los clips que tú añades manualmente — después de encontrarlos navegando el perfil en otra pestaña. No descarga archivos de vídeo. Es una hoja de contacto personal, curada por ti, no un robot que recolecta contenido.",
+  infoP3: "Todo lo que guardas — los enlaces añadidos — permanece local, en este navegador. Nada se envía a ningún servidor.",
+  footerTag: "sin cuenta · sin telemetría · sin servidor",
+  lightboxCloseAria: "Cerrar",
+  lightboxPrevAria: "Fotograma anterior",
+  lightboxNextAria: "Fotograma siguiente",
+  emptyTitle: "Todavía no hay ninguna hoja de contacto.",
+  emptySub: "Añade tu primer clip arriba — cada autor recibe su propia hoja de contacto.",
+  noMatchTitle: "Ninguna hoja de contacto coincide.",
+  noMatchSub: "Prueba con otro autor u otra palabra de las notas.",
+  hintEmpty: "Pega primero un enlace.",
+  hintShortlink: "Es un enlace acortado. Ábrelo una vez en una pestaña nueva para obtener el enlace completo (.../@autor/video/...), y luego pégalo aquí.",
+  hintInvalid: "No reconozco ese enlace. Necesita el formato .../@autor/video/ID.",
+  hintDuplicate: "Ese clip ya está en la colección de @{user}.",
+  hintAdded: "Fotograma añadido a la hoja de contacto de @{user}.",
+  frameCountOne: "fotograma",
+  frameCountOther: "fotogramas",
+  profileOpenButton: "Perfil ↗",
+  removeCollectionButton: "Eliminar hoja",
+  confirmRemoveCollection: "¿Eliminar toda la hoja de contacto de @{user}?",
+  framePlayAria: "Reproducir el fotograma {n} de @{user}",
+  frameRemoveAria: "Eliminar el fotograma {n}",
+  photoBadgeTitle: "Publicación de foto",
+  notePlaceholder: "nota…",
+  noteAria: "Nota para el fotograma {n} de @{user}",
+  lightboxMeta: "@{user} · fotograma {current}/{total}",
+  photoHint: "Publicación de foto — el reproductor de TikTok está pensado para clips de vídeo. Si no carga, ábrela directamente aquí abajo.",
+  openOnTiktok: "Abrir en TikTok ↗",
+  importInvalidAlert: "Este archivo no parece una exportación válida.",
+  confirmClearAll: "¿Borrar toda la colección guardada localmente? No se puede deshacer.",
+  iframeTitle: "Reproductor de TikTok"
+},
+pt: {
+  pageTitle: "Cadraj — para o TikTok, sem conta",
+  titleSub: "para o TikTok, sem conta",
+  tagline: "Reúna manualmente os clipes que te interessam de um autor e depois revele-os no player oficial do TikTok — sem conta, sem feed algorítmico, salvos apenas neste navegador.",
+  addLabel: "Link para um clipe do TikTok",
+  addPlaceholder: "https://www.tiktok.com/@autor/video/...",
+  addButton: "Adicionar",
+  profileLabel: "Abrir um perfil diretamente no TikTok (nova aba)",
+  profilePlaceholder: "@autor",
+  profileButton: "Abrir perfil ↗",
+  filterLabel: "Buscar nas coleções",
+  filterPlaceholder: "autor ou palavras das notas…",
+  exportButton: "Exportar (JSON)",
+  importButton: "Importar",
+  clearButton: "Apagar tudo",
+  infoSummary: "O que esta ferramenta pode e não pode fazer",
+  infoP1: "Não coleta nem lista automaticamente os clipes de um perfil. Por ser um arquivo HTML sem servidor próprio, não consegue contornar as assinaturas criptográficas nem os limites de taxa com que o TikTok protege esse tipo de acesso automatizado — e tentar contorná-los violaria os termos de uso deles.",
+  infoP2: "O que faz: revela, através do player de incorporação oficial do TikTok, os clipes que você adiciona manualmente — depois de encontrá-los navegando pelo perfil em outra aba. Não baixa arquivos de vídeo. É uma folha de contato pessoal, organizada por você, não um robô de coleta de conteúdo.",
+  infoP3: "Tudo o que você salva — os links adicionados — permanece local, neste navegador. Nada é enviado a nenhum servidor.",
+  footerTag: "sem conta · sem telemetria · sem servidor",
+  lightboxCloseAria: "Fechar",
+  lightboxPrevAria: "Quadro anterior",
+  lightboxNextAria: "Próximo quadro",
+  emptyTitle: "Ainda nenhuma folha de contato.",
+  emptySub: "Adicione seu primeiro clipe acima — cada autor recebe sua própria folha de contato.",
+  noMatchTitle: "Nenhuma folha de contato corresponde.",
+  noMatchSub: "Tente outro autor ou outra palavra das notas.",
+  hintEmpty: "Cole um link primeiro.",
+  hintShortlink: "Esse é um link encurtado. Abra-o uma vez em uma nova aba para obter o link completo (.../@autor/video/...) e depois cole-o aqui.",
+  hintInvalid: "Não reconheço esse link. Ele precisa do formato .../@autor/video/ID.",
+  hintDuplicate: "Esse clipe já está na coleção de @{user}.",
+  hintAdded: "Quadro adicionado à folha de contato de @{user}.",
+  frameCountOne: "quadro",
+  frameCountOther: "quadros",
+  profileOpenButton: "Perfil ↗",
+  removeCollectionButton: "Remover folha",
+  confirmRemoveCollection: "Remover toda a folha de contato de @{user}?",
+  framePlayAria: "Reproduzir o quadro {n} de @{user}",
+  frameRemoveAria: "Remover o quadro {n}",
+  photoBadgeTitle: "Publicação de foto",
+  notePlaceholder: "nota…",
+  noteAria: "Nota para o quadro {n} de @{user}",
+  lightboxMeta: "@{user} · quadro {current}/{total}",
+  photoHint: "Publicação de foto — o player do TikTok é feito para clipes de vídeo. Se não carregar, abra-a diretamente abaixo.",
+  openOnTiktok: "Abrir no TikTok ↗",
+  importInvalidAlert: "Esse arquivo não parece uma exportação válida.",
+  confirmClearAll: "Apagar toda a coleção salva localmente? Isso não pode ser desfeito.",
+  iframeTitle: "Player do TikTok"
+},
+de: {
+  pageTitle: "Cadraj — für TikTok, ohne Konto",
+  titleSub: "für TikTok, ohne Konto",
+  tagline: "Sammle manuell die Clips, die dich bei einem Ersteller interessieren, und entwickle sie dann über den offiziellen TikTok-Player — ohne Konto, ohne algorithmischen Feed, nur lokal in diesem Browser gespeichert.",
+  addLabel: "Link zu einem TikTok-Clip",
+  addPlaceholder: "https://www.tiktok.com/@autor/video/...",
+  addButton: "Hinzufügen",
+  profileLabel: "Profil direkt bei TikTok öffnen (neuer Tab)",
+  profilePlaceholder: "@autor",
+  profileButton: "Profil öffnen ↗",
+  filterLabel: "In den Sammlungen suchen",
+  filterPlaceholder: "Ersteller oder Wörter aus den Notizen…",
+  exportButton: "Exportieren (JSON)",
+  importButton: "Importieren",
+  clearButton: "Alles löschen",
+  infoSummary: "Was dieses Werkzeug kann und was nicht",
+  infoP1: "Es sammelt und listet die Clips eines Profils nicht automatisch auf. Als serverlose HTML-Datei kann es die kryptografischen Signaturen und Ratenlimits, mit denen TikTok diese Art von automatisiertem Zugriff schützt, nicht umgehen — und ein Umgehungsversuch würde gegen deren Nutzungsbedingungen verstoßen.",
+  infoP2: "Was es tut: Es entwickelt über den offiziellen Embed-Player von TikTok die Clips, die du selbst hinzufügst — nachdem du sie beim Durchstöbern des Profils in einem separaten Tab gefunden hast. Es lädt keine Videodateien herunter. Es ist ein persönlicher, von dir kuratierter Kontaktbogen, kein Content-Erntebot.",
+  infoP3: "Alles, was du speicherst — die hinzugefügten Links —, bleibt lokal in diesem Browser. Nichts wird an einen Server gesendet.",
+  footerTag: "ohne Konto · ohne Telemetrie · ohne Server",
+  lightboxCloseAria: "Schließen",
+  lightboxPrevAria: "Vorheriges Bild",
+  lightboxNextAria: "Nächstes Bild",
+  emptyTitle: "Noch kein Kontaktbogen.",
+  emptySub: "Füge oben deinen ersten Clip hinzu — jeder Ersteller bekommt seinen eigenen Kontaktbogen.",
+  noMatchTitle: "Kein Kontaktbogen passt.",
+  noMatchSub: "Versuch's mit einem anderen Ersteller oder einem anderen Wort aus den Notizen.",
+  hintEmpty: "Füge zuerst einen Link ein.",
+  hintShortlink: "Das ist ein Kurzlink. Öffne ihn einmal in einem neuen Tab, um den vollständigen Link zu erhalten (.../@autor/video/...), und füge diesen dann hier ein.",
+  hintInvalid: "Diesen Link erkenne ich nicht. Er braucht das Format .../@autor/video/ID.",
+  hintDuplicate: "Dieser Clip ist schon in der Sammlung von @{user}.",
+  hintAdded: "Bild zum Kontaktbogen von @{user} hinzugefügt.",
+  frameCountOne: "Bild",
+  frameCountOther: "Bilder",
+  profileOpenButton: "Profil ↗",
+  removeCollectionButton: "Bogen entfernen",
+  confirmRemoveCollection: "Den gesamten Kontaktbogen von @{user} entfernen?",
+  framePlayAria: "Bild {n} von @{user} abspielen",
+  frameRemoveAria: "Bild {n} entfernen",
+  photoBadgeTitle: "Foto-Beitrag",
+  notePlaceholder: "Notiz…",
+  noteAria: "Notiz für Bild {n} von @{user}",
+  lightboxMeta: "@{user} · Bild {current}/{total}",
+  photoHint: "Foto-Beitrag — der TikTok-Player ist für Videoclips gemacht. Falls es nicht lädt, öffne es unten direkt.",
+  openOnTiktok: "Auf TikTok öffnen ↗",
+  importInvalidAlert: "Diese Datei sieht nicht wie ein gültiger Export aus.",
+  confirmClearAll: "Die gesamte lokal gespeicherte Sammlung löschen? Das kann nicht rückgängig gemacht werden.",
+  iframeTitle: "TikTok-Player"
+}
+};
+
+var LANGS = ['ro','en','fr','it','es','pt','de'];
+function detectInitialLang(){
+  var hash = (window.location.hash||'').replace('#','').toLowerCase();
+  if(LANGS.indexOf(hash) !== -1) return hash;
+  var nav = ((navigator.language||navigator.userLanguage||'')+'').slice(0,2).toLowerCase();
+  if(LANGS.indexOf(nav) !== -1) return nav;
+  return 'ro';
+}
+var currentLang = detectInitialLang();
+function t(key, vars){
+  var dict = LANG_UI[currentLang] || LANG_UI.ro;
+  var str = (dict[key] !== undefined) ? dict[key] : (LANG_UI.ro[key] !== undefined ? LANG_UI.ro[key] : key);
+  if(vars){
+    Object.keys(vars).forEach(function(k){ str = str.split('{'+k+'}').join(vars[k]); });
+  }
+  return str;
+}
+function frameCountLabel(n){
+  return n + ' ' + (n === 1 ? t('frameCountOne') : t('frameCountOther'));
+}
+function applyStaticText(){
+  document.documentElement.lang = currentLang;
+  document.title = t('pageTitle');
+  var els = document.querySelectorAll('[data-i18n]');
+  for(var i=0;i<els.length;i++){ els[i].textContent = t(els[i].getAttribute('data-i18n')); }
+  var phEls = document.querySelectorAll('[data-i18n-placeholder]');
+  for(var j=0;j<phEls.length;j++){ phEls[j].placeholder = t(phEls[j].getAttribute('data-i18n-placeholder')); }
+  var ariaEls = document.querySelectorAll('[data-i18n-aria]');
+  for(var k=0;k<ariaEls.length;k++){ ariaEls[k].setAttribute('aria-label', t(ariaEls[k].getAttribute('data-i18n-aria'))); }
+}
+function updateLangSwitchUI(){
+  var buttons = document.querySelectorAll('#lang-switch button');
+  for(var i=0;i<buttons.length;i++){
+    if(buttons[i].getAttribute('data-lang') === currentLang) buttons[i].setAttribute('aria-current','true');
+    else buttons[i].removeAttribute('aria-current');
+  }
+}
+function setLang(lang){
+  if(LANGS.indexOf(lang) === -1) return;
+  currentLang = lang;
+  try{ window.history.replaceState(null,'','#'+lang); }catch(e){ window.location.hash = lang; }
+  applyStaticText();
+  updateLangSwitchUI();
+  render();
+  if(typeof lightbox !== 'undefined' && lightbox && !lightbox.hidden) renderLightbox();
+}
+
+
+var STORAGE_KEY = 'tiktok-fara-cont:v1';
+var memoryFallback = {};
+var hasLocalStorage = true;
+try {
+  var probe = '__tfc_probe__';
+  window.localStorage.setItem(probe,'1');
+  window.localStorage.removeItem(probe);
+} catch(err){ hasLocalStorage = false; }
+
+function readStorage(){
+  if(hasLocalStorage){
+    try { return window.localStorage.getItem(STORAGE_KEY); } catch(err){ /* fall through */ }
+  }
+  return memoryFallback[STORAGE_KEY] || null;
+}
+function writeStorage(value){
+  if(hasLocalStorage){
+    try { window.localStorage.setItem(STORAGE_KEY, value); return; } catch(err){ /* fall through */ }
+  }
+  memoryFallback[STORAGE_KEY] = value;
+}
+function loadState(){
+  var raw = readStorage();
+  if(!raw) return { collections:{} };
+  try {
+    var parsed = JSON.parse(raw);
+    if(parsed && typeof parsed === 'object' && parsed.collections) return parsed;
+  } catch(err){ /* corrupt, start fresh */ }
+  return { collections:{} };
+}
+var state = loadState();
+function persist(){ writeStorage(JSON.stringify(state)); }
+
+var VIDEO_RE = /tiktok\.com\/@([a-zA-Z0-9_.]{1,32})\/(video|photo)\/(\d{5,25})/i;
+var SHORTLINK_RE = /(?:vm|vt)\.tiktok\.com\//i;
+function isValidUsername(u){ return /^[a-zA-Z0-9_.]{1,32}$/.test(u); }
+function isValidId(i){ return /^\d{5,25}$/.test(i); }
+
+function parseInput(raw){
+  var trimmed = (raw||'').trim();
+  if(!trimmed) return { error:'empty' };
+  var match = trimmed.match(VIDEO_RE);
+  if(match) return { username: match[1], kind: match[2].toLowerCase(), id: match[3] };
+  if(SHORTLINK_RE.test(trimmed)) return { error:'shortlink' };
+  return { error:'invalid' };
+}
+
+function ensureCollection(username){
+  if(!state.collections[username]) state.collections[username] = { videos: [], touchedAt: Date.now() };
+  return state.collections[username];
+}
+function addVideo(username,id,kind){
+  var col = ensureCollection(username);
+  var exists = col.videos.some(function(v){ return v.id === id; });
+  if(exists) return 'duplicate';
+  col.videos.push({ id: id, kind: (kind === 'photo') ? 'photo' : 'video', note: '', addedAt: Date.now() });
+  col.touchedAt = Date.now();
+  persist();
+  return 'added';
+}
+function setVideoNote(username,id,note){
+  var col = state.collections[username];
+  if(!col) return;
+  var video = col.videos.filter(function(v){ return v.id === id; })[0];
+  if(!video) return;
+  video.note = String(note||'').slice(0,140);
+  persist();
+}
+function removeVideo(username,id){
+  var col = state.collections[username];
+  if(!col) return;
+  col.videos = col.videos.filter(function(v){ return v.id !== id; });
+  if(col.videos.length === 0) delete state.collections[username];
+  persist();
+}
+function removeCollection(username){ delete state.collections[username]; persist(); }
+function orderedCollections(){
+  return Object.keys(state.collections)
+    .map(function(username){ return { username: username, data: state.collections[username] }; })
+    .sort(function(a,b){ return b.data.touchedAt - a.data.touchedAt; });
+}
+
+var collectionsEl = document.getElementById('collections');
+var filterPanel = document.getElementById('filter-panel');
+var filterInput = document.getElementById('filter-input');
+var filterQuery = '';
+function frameNumber(i){ return String(i+1).padStart(2,'0'); }
+
+function matchesFilter(username, data){
+  if(!filterQuery) return true;
+  if(username.toLowerCase().indexOf(filterQuery) !== -1) return true;
+  return data.videos.some(function(v){ return (v.note||'').toLowerCase().indexOf(filterQuery) !== -1; });
+}
+
+function render(){
+  var cols = orderedCollections();
+  filterPanel.hidden = cols.length === 0;
+  collectionsEl.innerHTML = '';
+  if(cols.length === 0){
+    var empty = document.createElement('div');
+    empty.className = 'empty-state';
+    var p1 = document.createElement('p'); p1.textContent = t('emptyTitle');
+    var p2 = document.createElement('p'); p2.className='empty-state__sub';
+    p2.textContent = t('emptySub');
+    empty.appendChild(p1); empty.appendChild(p2);
+    collectionsEl.appendChild(empty);
+    return;
+  }
+  var filtered = cols.filter(function(col){ return matchesFilter(col.username, col.data); });
+  if(filtered.length === 0){
+    var noMatch = document.createElement('div');
+    noMatch.className = 'empty-state';
+    var m1 = document.createElement('p'); m1.textContent = t('noMatchTitle');
+    var m2 = document.createElement('p'); m2.className='empty-state__sub';
+    m2.textContent = t('noMatchSub');
+    noMatch.appendChild(m1); noMatch.appendChild(m2);
+    collectionsEl.appendChild(noMatch);
+    return;
+  }
+  filtered.forEach(function(col){ collectionsEl.appendChild(renderCollection(col.username, col.data)); });
+}
+filterInput.addEventListener('input', function(){ filterQuery = filterInput.value.trim().toLowerCase(); render(); });
+
+function renderCollection(username, data){
+  var section = document.createElement('section');
+  section.className = 'collection';
+
+  var header = document.createElement('div');
+  header.className = 'collection__header';
+
+  var idBlock = document.createElement('div');
+  idBlock.className = 'collection__id';
+  var title = document.createElement('span');
+  title.className = 'collection__title';
+  title.textContent = '@' + username;
+  var count = document.createElement('span');
+  count.className = 'collection__count';
+  count.textContent = frameCountLabel(data.videos.length);
+  idBlock.appendChild(title); idBlock.appendChild(count);
+
+  var actions = document.createElement('div');
+  actions.className = 'collection__actions';
+  var openProfileBtn = document.createElement('button');
+  openProfileBtn.type = 'button';
+  openProfileBtn.className = 'btn btn-secondary btn-sm';
+  openProfileBtn.textContent = t('profileOpenButton');
+  openProfileBtn.addEventListener('click', function(){ window.open('https://www.tiktok.com/@'+username, '_blank', 'noopener'); });
+  var removeColBtn = document.createElement('button');
+  removeColBtn.type = 'button';
+  removeColBtn.className = 'btn btn-danger btn-sm';
+  removeColBtn.textContent = t('removeCollectionButton');
+  removeColBtn.addEventListener('click', function(){
+    if(window.confirm(t('confirmRemoveCollection', {user: username}))){
+      removeCollection(username);
+      render();
+    }
+  });
+  actions.appendChild(openProfileBtn); actions.appendChild(removeColBtn);
+
+  header.appendChild(idBlock); header.appendChild(actions);
+  section.appendChild(header);
+
+  var grid = document.createElement('div');
+  grid.className = 'collection__grid';
+  data.videos.forEach(function(video,i){ grid.appendChild(renderFrame(username, video, i)); });
+  section.appendChild(grid);
+
+  return section;
+}
+
+function renderFrame(username, video, index){
+  var card = document.createElement('div');
+  card.className = 'frame-card';
+
+  var wrapper = document.createElement('div');
+  wrapper.className = 'frame';
+
+  var playBtn = document.createElement('button');
+  playBtn.type = 'button';
+  playBtn.className = 'frame__play-area';
+  playBtn.setAttribute('aria-label', t('framePlayAria', {n: frameNumber(index), user: username}));
+  playBtn.addEventListener('click', function(){ openLightbox(username, video.id); });
+
+  var num = document.createElement('span');
+  num.className = 'frame__number'; num.textContent = frameNumber(index);
+  var icon = document.createElement('span');
+  icon.className = 'frame__play-icon'; icon.setAttribute('aria-hidden','true'); icon.textContent = '▶';
+  var idSpan = document.createElement('span');
+  idSpan.className = 'frame__id'; idSpan.textContent = video.id.slice(-6);
+  playBtn.appendChild(num); playBtn.appendChild(icon); playBtn.appendChild(idSpan);
+
+  var removeBtn = document.createElement('button');
+  removeBtn.type = 'button';
+  removeBtn.className = 'frame__remove';
+  removeBtn.setAttribute('aria-label', t('frameRemoveAria', {n: frameNumber(index)}));
+  removeBtn.textContent = '✕';
+  removeBtn.addEventListener('click', function(e){ e.stopPropagation(); removeVideo(username, video.id); render(); });
+
+  wrapper.appendChild(playBtn); wrapper.appendChild(removeBtn);
+
+  if(video.kind === 'photo'){
+    var badge = document.createElement('span');
+    badge.className = 'frame__kind-badge';
+    badge.textContent = '📷';
+    badge.title = t('photoBadgeTitle');
+    badge.setAttribute('aria-hidden','true');
+    wrapper.appendChild(badge);
+  }
+
+  var noteInput = document.createElement('input');
+  noteInput.type = 'text';
+  noteInput.className = 'frame__note';
+  noteInput.placeholder = t('notePlaceholder');
+  noteInput.maxLength = 140;
+  noteInput.value = video.note || '';
+  noteInput.setAttribute('aria-label', t('noteAria', {n: frameNumber(index), user: username}));
+  noteInput.addEventListener('change', function(){ setVideoNote(username, video.id, noteInput.value); });
+  noteInput.addEventListener('keydown', function(e){ if(e.key === 'Enter') noteInput.blur(); });
+
+  card.appendChild(wrapper);
+  card.appendChild(noteInput);
+  return card;
+}
+
+// Lightbox
+var lightbox = document.getElementById('lightbox');
+var lightboxFrameContainer = document.getElementById('lightbox-frame-container');
+var lightboxMeta = document.getElementById('lightbox-meta');
+var lightboxUsername = null, lightboxIndex = -1;
+
+function buildPlayerSrc(id){
+  var params = new URLSearchParams({ music_info:'1', description:'1', rel:'0' });
+  return 'https://www.tiktok.com/player/v1/'+id+'?'+params.toString();
+}
+function openLightbox(username, id){
+  var col = state.collections[username];
+  if(!col) return;
+  var idx = col.videos.findIndex(function(v){ return v.id === id; });
+  if(idx === -1) return;
+  lightboxUsername = username; lightboxIndex = idx;
+  renderLightbox();
+  lightbox.hidden = false;
+  document.body.classList.add('no-scroll');
+}
+function renderLightbox(){
+  var col = state.collections[lightboxUsername];
+  if(!col || !col.videos[lightboxIndex]){ closeLightbox(); return; }
+  var video = col.videos[lightboxIndex];
+  lightboxFrameContainer.innerHTML = '';
+  var iframe = document.createElement('iframe');
+  iframe.src = buildPlayerSrc(video.id);
+  iframe.setAttribute('allow','fullscreen');
+  iframe.setAttribute('title', t('iframeTitle'));
+  lightboxFrameContainer.appendChild(iframe);
+
+  lightboxMeta.innerHTML = '';
+  var metaText = document.createElement('span');
+  metaText.textContent = t('lightboxMeta', {user: lightboxUsername, current: frameNumber(lightboxIndex), total: frameNumber(col.videos.length-1)});
+  lightboxMeta.appendChild(metaText);
+
+  if(video.note){
+    var noteText = document.createElement('span');
+    noteText.className = 'lightbox__note';
+    noteText.textContent = '„'+video.note+'"';
+    lightboxMeta.appendChild(noteText);
+  }
+
+  if(video.kind === 'photo'){
+    var photoHint = document.createElement('span');
+    photoHint.className = 'lightbox__hint';
+    photoHint.textContent = t('photoHint');
+    lightboxMeta.appendChild(photoHint);
+  }
+
+  var metaLink = document.createElement('a');
+  metaLink.href = 'https://www.tiktok.com/@'+lightboxUsername+'/video/'+video.id;
+  metaLink.target = '_blank'; metaLink.rel = 'noopener noreferrer';
+  metaLink.textContent = t('openOnTiktok');
+  lightboxMeta.appendChild(metaLink);
+}
+function closeLightbox(){
+  lightbox.hidden = true;
+  lightboxFrameContainer.innerHTML = '';
+  lightboxUsername = null; lightboxIndex = -1;
+  document.body.classList.remove('no-scroll');
+}
+function lightboxNav(delta){
+  var col = state.collections[lightboxUsername];
+  if(!col) return;
+  var next = lightboxIndex + delta;
+  if(next < 0) next = col.videos.length - 1;
+  if(next >= col.videos.length) next = 0;
+  lightboxIndex = next;
+  renderLightbox();
+}
+document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+document.getElementById('lightbox-prev').addEventListener('click', function(){ lightboxNav(-1); });
+document.getElementById('lightbox-next').addEventListener('click', function(){ lightboxNav(1); });
+lightbox.addEventListener('click', function(e){ if(e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', function(e){
+  if(lightbox.hidden) return;
+  if(e.key === 'Escape') closeLightbox();
+  if(e.key === 'ArrowLeft') lightboxNav(-1);
+  if(e.key === 'ArrowRight') lightboxNav(1);
+});
+
+// Add form
+var addForm = document.getElementById('add-form');
+var urlInput = document.getElementById('url-input');
+var addHint = document.getElementById('add-hint');
+function setHint(el, text, kind){ el.textContent = text; el.className = 'hint hint--'+kind; }
+addForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  var result = parseInput(urlInput.value);
+  if(result.error === 'empty'){ setHint(addHint, t('hintEmpty'), 'error'); return; }
+  if(result.error === 'shortlink'){ setHint(addHint, t('hintShortlink'), 'error'); return; }
+  if(result.error === 'invalid'){ setHint(addHint, t('hintInvalid'), 'error'); return; }
+  var outcome = addVideo(result.username, result.id, result.kind);
+  if(outcome === 'duplicate'){ setHint(addHint, t('hintDuplicate', {user: result.username}), 'error'); }
+  else { setHint(addHint, t('hintAdded', {user: result.username}), 'success'); urlInput.value=''; render(); }
+});
+
+// Profile form
+var profileForm = document.getElementById('profile-form');
+var profileInput = document.getElementById('profile-input');
+profileForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  var uname = profileInput.value.trim().replace(/^@/, '');
+  if(!isValidUsername(uname)) return;
+  window.open('https://www.tiktok.com/@'+uname, '_blank', 'noopener');
+});
+
+// Export / Import / Clear
+document.getElementById('export-btn').addEventListener('click', function(){
+  var blob = new Blob([JSON.stringify(state,null,2)], { type:'application/json' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'tiktok-fara-cont.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+var importFile = document.getElementById('import-file');
+document.getElementById('import-btn').addEventListener('click', function(){ importFile.click(); });
+importFile.addEventListener('change', function(){
+  var file = importFile.files[0];
+  if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(){
+    try {
+      var data = JSON.parse(reader.result);
+      mergeImportedState(data);
+      render();
+    } catch(err){ window.alert(t('importInvalidAlert')); }
+    importFile.value = '';
+  };
+  reader.readAsText(file);
+});
+function mergeImportedState(data){
+  if(!data || typeof data !== 'object' || !data.collections) return;
+  Object.keys(data.collections).forEach(function(username){
+    if(!isValidUsername(username)) return;
+    var incoming = data.collections[username];
+    if(!incoming || !Array.isArray(incoming.videos)) return;
+    var col = ensureCollection(username);
+    incoming.videos.forEach(function(v){
+      if(!v || !isValidId(String(v.id))) return;
+      var id = String(v.id);
+      var exists = col.videos.some(function(existing){ return existing.id === id; });
+      if(!exists) col.videos.push({
+        id: id,
+        kind: (v.kind === 'photo') ? 'photo' : 'video',
+        note: typeof v.note === 'string' ? v.note.slice(0,140) : '',
+        addedAt: v.addedAt || Date.now()
+      });
+    });
+    col.touchedAt = Date.now();
+  });
+  persist();
+}
+document.getElementById('clear-btn').addEventListener('click', function(){
+  if(window.confirm(t('confirmClearAll'))){
+    state = { collections: {} };
+    persist();
+    render();
+  }
+});
+
+// Language switch
+var langSwitchButtons = document.querySelectorAll('#lang-switch button');
+for(var li=0; li<langSwitchButtons.length; li++){
+  langSwitchButtons[li].addEventListener('click', function(e){ setLang(e.currentTarget.getAttribute('data-lang')); });
+}
+
+applyStaticText();
+updateLangSwitchUI();
+render();
+})();
+</script>
+</body>
+</html>
