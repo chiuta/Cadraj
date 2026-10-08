@@ -8,7 +8,7 @@
 <style>
 :root{
   --bg:#15130f; --bg-raised:#1c1913; --bg-card:#221e17;
-  --border:#332e24; --text:#f0ebe0; --text-dim:#9a9182; --text-faint:#7d7566;
+  --border:#332e24; --text:#f0ebe0; --text-dim:#9a9182; --text-faint:#948b7c;
   --accent:#e8632c; --cool:#45d9c7; --danger:#e2585c;
   --danger-soft:rgba(226,88,92,.12);
   --radius:4px;
@@ -172,7 +172,7 @@ footer.foot{ text-align:center; color:var(--text-faint); font-size:.72rem; font-
       <input type="text" id="url-input" data-i18n-placeholder="addPlaceholder" placeholder="https://www.tiktok.com/@autor/video/...">
       <button type="submit" class="btn btn-primary" data-i18n="addButton">Adaugă</button>
     </div>
-    <p class="hint" id="add-hint"></p>
+    <p class="hint" id="add-hint" role="status" aria-live="polite"></p>
   </form>
 </section>
 
@@ -211,7 +211,7 @@ footer.foot{ text-align:center; color:var(--text-faint); font-size:.72rem; font-
 
 <footer class="foot" data-i18n="footerTag">fără cont · fără telemetrie · fără server</footer>
 
-<div class="lightbox" id="lightbox" hidden>
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="TikTok">
   <div class="lightbox__inner">
     <button type="button" class="lightbox__close" id="lightbox-close" data-i18n-aria="lightboxCloseAria" aria-label="Închide">✕</button>
     <div class="lightbox__frame" id="lightbox-frame-container"></div>
@@ -243,7 +243,7 @@ ro: {
   infoSummary: "Ce poate și ce nu poate face acest instrument",
   infoP1: "Nu adună și nu enumeră automat clipurile unui profil. Ca fișier HTML fără server propriu, nu poate ocoli semnăturile criptografice și limitele de rată cu care TikTok protejează acest tip de acces automatizat — iar o încercare de a le ocoli le-ar încălca termenii lor de utilizare.",
   infoP2: "Ce face: developează, prin playerul oficial de embed al TikTok, clipurile pe care tu le adaugi manual — după ce le găsești navigând profilul într-un tab separat. Nu descarcă fișiere video. E o coală de contact personală, curatoriată de tine, nu un robot de recoltat conținut.",
-  infoP3: "Tot ce salvezi — linkurile adăugate — rămâne local, în acest browser. Nimic nu pleacă spre vreun server.",
+  infoP3: "Tot ce salvezi — linkurile adăugate — rămâne local, în acest browser. Nimic nu pleacă spre vreun server. Excepție: când redai un clip, playerul se încarcă de la TikTok, care primește adresa ta IP și ID-ul clipului.",
   footerTag: "fără cont · fără telemetrie · fără server",
   lightboxCloseAria: "Închide",
   lightboxPrevAria: "Cadrul anterior",
@@ -292,7 +292,7 @@ en: {
   infoSummary: "What this tool can and can't do",
   infoP1: "It doesn't collect or list a profile's clips automatically. As a server-less HTML file, it can't bypass the cryptographic signatures and rate limits TikTok uses to protect against this kind of automated access — and trying to would breach their terms of use.",
   infoP2: "What it does: it develops, through TikTok's official embed player, the clips you add manually — after finding them by browsing the profile in a separate tab. It doesn't download video files. It's a personal contact sheet, curated by you, not a content-harvesting bot.",
-  infoP3: "Everything you save — the links you add — stays local, in this browser. Nothing is sent to any server.",
+  infoP3: "Everything you save — the links you add — stays local, in this browser. Nothing is sent to any server. Exception: when you play a clip, the player loads from TikTok, which receives your IP address and the clip ID.",
   footerTag: "no account · no telemetry · no server",
   lightboxCloseAria: "Close",
   lightboxPrevAria: "Previous frame",
@@ -341,7 +341,7 @@ fr: {
   infoSummary: "Ce que cet outil peut et ne peut pas faire",
   infoP1: "Il ne recueille ni ne liste automatiquement les clips d'un profil. En tant que fichier HTML sans serveur propre, il ne peut pas contourner les signatures cryptographiques ni les limites de débit par lesquelles TikTok protège ce type d'accès automatisé — et tenter de le faire enfreindrait leurs conditions d'utilisation.",
   infoP2: "Ce qu'il fait : il développe, via le lecteur d'intégration officiel de TikTok, les clips que tu ajoutes toi-même — après les avoir trouvés en parcourant le profil dans un onglet séparé. Il ne télécharge aucun fichier vidéo. C'est une planche contact personnelle, que tu constitues toi-même, pas un robot de collecte de contenu.",
-  infoP3: "Tout ce que tu enregistres — les liens ajoutés — reste local, dans ce navigateur. Rien n'est envoyé à un serveur quelconque.",
+  infoP3: "Tout ce que tu enregistres — les liens ajoutés — reste local, dans ce navigateur. Rien n'est envoyé à un serveur quelconque. Exception : à la lecture d'un clip, le lecteur se charge depuis TikTok, qui reçoit ton adresse IP et l'identifiant du clip.",
   footerTag: "sans compte · sans télémétrie · sans serveur",
   lightboxCloseAria: "Fermer",
   lightboxPrevAria: "Image précédente",
@@ -390,7 +390,7 @@ it: {
   infoSummary: "Cosa può e cosa non può fare questo strumento",
   infoP1: "Non raccoglie né elenca automaticamente i clip di un profilo. Essendo un file HTML senza un proprio server, non può aggirare le firme crittografiche né i limiti di frequenza con cui TikTok protegge questo tipo di accesso automatizzato — e tentare di farlo violerebbe i loro termini di utilizzo.",
   infoP2: "Cosa fa: sviluppa, tramite il player di embed ufficiale di TikTok, i clip che aggiungi tu manualmente — dopo averli trovati sfogliando il profilo in una scheda separata. Non scarica file video. È un provino a contatto personale, curato da te, non un bot che raccoglie contenuti.",
-  infoP3: "Tutto ciò che salvi — i link aggiunti — resta locale, in questo browser. Niente viene inviato a un server.",
+  infoP3: "Tutto ciò che salvi — i link aggiunti — resta locale, in questo browser. Niente viene inviato a un server. Eccezione: quando riproduci un clip, il player si carica da TikTok, che riceve il tuo indirizzo IP e l'ID del clip.",
   footerTag: "senza account · senza telemetria · senza server",
   lightboxCloseAria: "Chiudi",
   lightboxPrevAria: "Fotogramma precedente",
@@ -439,7 +439,7 @@ es: {
   infoSummary: "Qué puede y qué no puede hacer esta herramienta",
   infoP1: "No recopila ni lista automáticamente los clips de un perfil. Al ser un archivo HTML sin servidor propio, no puede eludir las firmas criptográficas ni los límites de frecuencia con los que TikTok protege este tipo de acceso automatizado — e intentar eludirlos incumpliría sus términos de uso.",
   infoP2: "Qué hace: revela, mediante el reproductor de inserción oficial de TikTok, los clips que tú añades manualmente — después de encontrarlos navegando el perfil en otra pestaña. No descarga archivos de vídeo. Es una hoja de contacto personal, curada por ti, no un robot que recolecta contenido.",
-  infoP3: "Todo lo que guardas — los enlaces añadidos — permanece local, en este navegador. Nada se envía a ningún servidor.",
+  infoP3: "Todo lo que guardas — los enlaces añadidos — permanece local, en este navegador. Nada se envía a ningún servidor. Excepción: al reproducir un clip, el reproductor se carga desde TikTok, que recibe tu dirección IP y el ID del clip.",
   footerTag: "sin cuenta · sin telemetría · sin servidor",
   lightboxCloseAria: "Cerrar",
   lightboxPrevAria: "Fotograma anterior",
@@ -488,7 +488,7 @@ pt: {
   infoSummary: "O que esta ferramenta pode e não pode fazer",
   infoP1: "Não coleta nem lista automaticamente os clipes de um perfil. Por ser um arquivo HTML sem servidor próprio, não consegue contornar as assinaturas criptográficas nem os limites de taxa com que o TikTok protege esse tipo de acesso automatizado — e tentar contorná-los violaria os termos de uso deles.",
   infoP2: "O que faz: revela, através do player de incorporação oficial do TikTok, os clipes que você adiciona manualmente — depois de encontrá-los navegando pelo perfil em outra aba. Não baixa arquivos de vídeo. É uma folha de contato pessoal, organizada por você, não um robô de coleta de conteúdo.",
-  infoP3: "Tudo o que você salva — os links adicionados — permanece local, neste navegador. Nada é enviado a nenhum servidor.",
+  infoP3: "Tudo o que você salva — os links adicionados — permanece local, neste navegador. Nada é enviado a nenhum servidor. Exceção: ao reproduzir um clipe, o player é carregado do TikTok, que recebe o seu endereço IP e o ID do clipe.",
   footerTag: "sem conta · sem telemetria · sem servidor",
   lightboxCloseAria: "Fechar",
   lightboxPrevAria: "Quadro anterior",
@@ -537,7 +537,7 @@ de: {
   infoSummary: "Was dieses Werkzeug kann und was nicht",
   infoP1: "Es sammelt und listet die Clips eines Profils nicht automatisch auf. Als serverlose HTML-Datei kann es die kryptografischen Signaturen und Ratenlimits, mit denen TikTok diese Art von automatisiertem Zugriff schützt, nicht umgehen — und ein Umgehungsversuch würde gegen deren Nutzungsbedingungen verstoßen.",
   infoP2: "Was es tut: Es entwickelt über den offiziellen Embed-Player von TikTok die Clips, die du selbst hinzufügst — nachdem du sie beim Durchstöbern des Profils in einem separaten Tab gefunden hast. Es lädt keine Videodateien herunter. Es ist ein persönlicher, von dir kuratierter Kontaktbogen, kein Content-Erntebot.",
-  infoP3: "Alles, was du speicherst — die hinzugefügten Links —, bleibt lokal in diesem Browser. Nichts wird an einen Server gesendet.",
+  infoP3: "Alles, was du speicherst — die hinzugefügten Links —, bleibt lokal in diesem Browser. Nichts wird an einen Server gesendet. Ausnahme: Beim Abspielen eines Clips wird der Player von TikTok geladen; TikTok erhält deine IP-Adresse und die Clip-ID.",
   footerTag: "ohne Konto · ohne Telemetrie · ohne Server",
   lightboxCloseAria: "Schließen",
   lightboxPrevAria: "Vorheriges Bild",
@@ -644,29 +644,47 @@ function loadState(){
   if(!raw) return { collections:{} };
   try {
     var parsed = JSON.parse(raw);
-    if(parsed && typeof parsed === 'object' && parsed.collections) return parsed;
+    if(parsed && typeof parsed === 'object' && parsed.collections) return sanitizeState(parsed);
   } catch(err){ /* corrupt, start fresh */ }
   return { collections:{} };
+}
+function sanitizeState(p){
+  var out = { collections:{} };
+  if(!p || typeof p.collections !== 'object' || !p.collections) return out;
+  Object.keys(p.collections).forEach(function(u){
+    if(!isValidUsername(u)) return;
+    var c = p.collections[u];
+    if(!c || !Array.isArray(c.videos)) return;
+    var vids = [], seen = {};
+    c.videos.forEach(function(v){
+      if(!v || !isValidId(String(v.id)) || seen[String(v.id)]) return;
+      seen[String(v.id)] = true;
+      vids.push({ id:String(v.id), kind:(v.kind === 'photo') ? 'photo' : 'video', note:(typeof v.note === 'string') ? v.note.slice(0,140) : '', addedAt:Number(v.addedAt) || Date.now() });
+    });
+    if(!vids.length) return;
+    out.collections[u] = { videos: vids, touchedAt: Number(c.touchedAt) || Date.now() };
+  });
+  return out;
 }
 var state = loadState();
 function persist(){ writeStorage(JSON.stringify(state)); }
 
 var VIDEO_RE = /tiktok\.com\/@([a-zA-Z0-9_.]{1,32})\/(video|photo)\/(\d{5,25})/i;
 var SHORTLINK_RE = /(?:vm|vt)\.tiktok\.com\//i;
-function isValidUsername(u){ return /^[a-zA-Z0-9_.]{1,32}$/.test(u); }
+function isValidUsername(u){ return /^[a-zA-Z0-9_.]{1,32}$/.test(u) && u !== '__proto__'; }
 function isValidId(i){ return /^\d{5,25}$/.test(i); }
 
 function parseInput(raw){
   var trimmed = (raw||'').trim();
   if(!trimmed) return { error:'empty' };
   var match = trimmed.match(VIDEO_RE);
-  if(match) return { username: match[1], kind: match[2].toLowerCase(), id: match[3] };
+  if(match && isValidUsername(match[1])) return { username: match[1], kind: match[2].toLowerCase(), id: match[3] };
   if(SHORTLINK_RE.test(trimmed)) return { error:'shortlink' };
   return { error:'invalid' };
 }
 
 function ensureCollection(username){
-  if(!state.collections[username]) state.collections[username] = { videos: [], touchedAt: Date.now() };
+  if(!Object.prototype.hasOwnProperty.call(state.collections, username)) state.collections[username] = { videos: [], touchedAt: Date.now() };
   return state.collections[username];
 }
 function addVideo(username,id,kind){
@@ -846,7 +864,7 @@ function renderFrame(username, video, index){
 var lightbox = document.getElementById('lightbox');
 var lightboxFrameContainer = document.getElementById('lightbox-frame-container');
 var lightboxMeta = document.getElementById('lightbox-meta');
-var lightboxUsername = null, lightboxIndex = -1;
+var lightboxUsername = null, lightboxIndex = -1, lightboxReturnFocus = null;
 
 function buildPlayerSrc(id){
   var params = new URLSearchParams({ music_info:'1', description:'1', rel:'0' });
@@ -857,10 +875,12 @@ function openLightbox(username, id){
   if(!col) return;
   var idx = col.videos.findIndex(function(v){ return v.id === id; });
   if(idx === -1) return;
+  lightboxReturnFocus = document.activeElement;
   lightboxUsername = username; lightboxIndex = idx;
   renderLightbox();
   lightbox.hidden = false;
   document.body.classList.add('no-scroll');
+  document.getElementById('lightbox-close').focus();
 }
 function renderLightbox(){
   var col = state.collections[lightboxUsername];
@@ -893,7 +913,7 @@ function renderLightbox(){
   }
 
   var metaLink = document.createElement('a');
-  metaLink.href = 'https://www.tiktok.com/@'+lightboxUsername+'/video/'+video.id;
+  metaLink.href = 'https://www.tiktok.com/@'+lightboxUsername+'/'+(video.kind === 'photo' ? 'photo' : 'video')+'/'+video.id;
   metaLink.target = '_blank'; metaLink.rel = 'noopener noreferrer';
   metaLink.textContent = t('openOnTiktok');
   lightboxMeta.appendChild(metaLink);
@@ -903,6 +923,8 @@ function closeLightbox(){
   lightboxFrameContainer.innerHTML = '';
   lightboxUsername = null; lightboxIndex = -1;
   document.body.classList.remove('no-scroll');
+  if(lightboxReturnFocus && lightboxReturnFocus.focus){ try{ lightboxReturnFocus.focus(); }catch(e){} }
+  lightboxReturnFocus = null;
 }
 function lightboxNav(delta){
   var col = state.collections[lightboxUsername];
@@ -957,7 +979,7 @@ document.getElementById('export-btn').addEventListener('click', function(){
   var a = document.createElement('a');
   a.href = url; a.download = 'tiktok-fara-cont.json';
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
 });
 var importFile = document.getElementById('import-file');
 document.getElementById('import-btn').addEventListener('click', function(){ importFile.click(); });
@@ -993,6 +1015,7 @@ function mergeImportedState(data){
         addedAt: v.addedAt || Date.now()
       });
     });
+    if(!col.videos.length){ delete state.collections[username]; return; }
     col.touchedAt = Date.now();
   });
   persist();
