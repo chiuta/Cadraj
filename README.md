@@ -51,3 +51,7 @@ Alexio — Alexandru-Ionuț Chiuță, contact: alexio@trom.tf
 ## English summary
 
 Cadraj is a single-file HTML tool for building a personal contact sheet of TikTok clips you add manually by link, grouped per author, played through TikTok's official embed player, with notes, search, lightbox, and JSON export/import. Data stays in localStorage; playback loads tiktok.com in an iframe, so it needs internet. 7 UI languages. It does not scrape profiles or download videos.
+
+## Audit
+
+Audit: 2026-10-10 — verificat: 0 erori JS, 0 probleme axe serious/critical; singurul trafic extern este iframe-ul playerului oficial `tiktok.com/player/v1/<id>` (ID-ul trece prin validare `\d{5,25}`, importul JSON este sanitizat, textele sunt inserate cu `textContent`). Subsolul „fără cont · fără telemetrie · fără server” se referă la aplicație; la redarea unui clip TikTok primește adresa IP și ID-ul clipului (aplicația spune asta în panoul „Info”). Aplicația nu este afiliată TikTok; respectarea termenilor TikTok pentru embed-uri rămâne în sarcina utilizatorului.
