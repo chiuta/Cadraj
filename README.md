@@ -6,6 +6,8 @@ Cadraj — pentru TikTok, fără cont: o „coală de contact" personală pentru
 
 ![Captura de ecran](screenshot.png)
 
+**Ultima actualizare:** 11 octombrie 2026
+
 ## Ce este
 
 Cadraj este o aplicație dintr-un singur fișier HTML în care adaugi manual linkuri către clipuri TikTok ale unui autor, iar aplicația le grupează pe colecții (câte una pe autor) și le afișează prin playerul oficial de embed TikTok, fără cont și fără feed algoritmic. Aplicația spune explicit ce nu face: nu enumeră automat clipurile unui profil, nu ocolește protecțiile TikTok și nu descarcă fișiere video.
@@ -33,7 +35,7 @@ Cadraj este o aplicație dintr-un singur fișier HTML în care adaugi manual lin
 ## Confidențialitate și rețea
 
 - Local: colecția (linkurile și notițele) se păstrează în `localStorage` al browserului, sub cheia `tiktok-fara-cont:v1`. Nu există cont și nici server propriu al aplicației; în codul verificat nu există apeluri `fetch`.
-- Rețea: aplicația nu este complet offline. La vizualizarea unui clip se încarcă în iframe playerul oficial `https://www.tiktok.com/player/v1/<id>`, deci TikTok primește cererea (și poate aplica propriile cookie-uri/politici). Butonul de profil și linkurile către clipuri deschid `www.tiktok.com`. Nu sunt alte gazde terțe în cod.
+- Rețea: aplicația nu este complet offline (fără rețea, vizualizarea afișează un mesaj explicativ). La vizualizarea unui clip se încarcă, într-un iframe cu `sandbox`, playerul oficial `https://www.tiktok.com/player/v1/<id>`, deci TikTok primește cererea (și poate aplica propriile cookie-uri/politici). Butonul de profil și linkurile către clipuri deschid `www.tiktok.com`. Nu sunt alte gazde terțe în cod.
 - Subsolul aplicației spune acum explicit: „fără cont · fără telemetrie · fără server propriu · redarea unui clip încarcă playerul TikTok” (afirmația „fără telemetrie” privește aplicația în sine, nu playerul TikTok din iframe).
 - Mărci: TikTok este marcă a deținătorului ei, folosită descriptiv (aplicația nu este afiliată TikTok).
 
@@ -44,6 +46,13 @@ Descarcă `index.html` și deschide-l în browser. Colecția și interfața func
 ## Licență
 
 Licența nu este încă declarată explicit în acest repository; vezi nota din aplicație.
+
+## Istoric / Changelog
+
+### 11 octombrie 2026
+- Adăugat: atribut `sandbox` pe iframe-ul playerului TikTok și politică CSP (frame-src doar `www.tiktok.com`, fără connect-src).
+- Adăugat: mesaj clar în vizualizare când browserul e offline (în loc de un cadru gol), în toate cele 7 limbi.
+- Reparat: conținutul paginii este acum încadrat în `<main>` (0 violări axe-core la 1280 și 360 px).
 
 ## Autor
 

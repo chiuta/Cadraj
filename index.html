@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; frame-src https://www.tiktok.com; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Cadraj — pentru TikTok, fără cont</title>
 <style>
 :root{
@@ -165,6 +166,7 @@ footer.foot{ text-align:center; color:var(--text-faint); font-size:.72rem; font-
   </nav>
 </header>
 
+<main>
 <section class="panel">
   <form id="add-form">
     <label class="field-label" for="url-input" data-i18n="addLabel">Link către un clip TikTok</label>
@@ -191,7 +193,7 @@ footer.foot{ text-align:center; color:var(--text-faint); font-size:.72rem; font-
   <input type="text" id="filter-input" data-i18n-placeholder="filterPlaceholder" placeholder="autor sau cuvinte din notițe…" style="width:100%;">
 </section>
 
-<main class="collections" id="collections"></main>
+<div class="collections" id="collections"></div>
 
 <section class="panel tools-panel">
   <button type="button" class="btn btn-secondary btn-sm" id="export-btn" data-i18n="exportButton">Exportă (JSON)</button>
@@ -208,6 +210,7 @@ footer.foot{ text-align:center; color:var(--text-faint); font-size:.72rem; font-
     <p data-i18n="infoP3">Tot ce salvezi — linkurile adăugate — rămâne local, în acest browser. Nimic nu pleacă spre vreun server.</p>
   </div>
 </details>
+</main>
 
 <footer class="foot" data-i18n="footerTag">fără cont · fără telemetrie · fără server propriu · redarea unui clip încarcă playerul TikTok</footer>
 
@@ -272,7 +275,8 @@ ro: {
   openOnTiktok: "Deschide pe TikTok ↗",
   importInvalidAlert: "Fișierul nu pare a fi un export valid.",
   confirmClearAll: "Ștergi toată colecția salvată local? Nu se poate anula.",
-  iframeTitle: "Player TikTok"
+  iframeTitle: "Player TikTok",
+  offlineNote: "Ești offline: playerul TikTok nu poate fi încărcat. Linkul și notița rămân salvate; reîncearcă după ce te conectezi."
 },
 en: {
   pageTitle: "Cadraj — for TikTok, without an account",
@@ -321,7 +325,8 @@ en: {
   openOnTiktok: "Open on TikTok ↗",
   importInvalidAlert: "That file doesn't look like a valid export.",
   confirmClearAll: "Delete the whole collection saved locally? This can't be undone.",
-  iframeTitle: "TikTok player"
+  iframeTitle: "TikTok player",
+  offlineNote: "You are offline: the TikTok player cannot load. Your link and note are saved; try again once you are connected."
 },
 fr: {
   pageTitle: "Cadraj — pour TikTok, sans compte",
@@ -370,7 +375,8 @@ fr: {
   openOnTiktok: "Ouvrir sur TikTok ↗",
   importInvalidAlert: "Ce fichier ne ressemble pas à un export valide.",
   confirmClearAll: "Supprimer toute la collection enregistrée localement ? Cette action est irréversible.",
-  iframeTitle: "Lecteur TikTok"
+  iframeTitle: "Lecteur TikTok",
+  offlineNote: "Vous êtes hors ligne : le lecteur TikTok ne peut pas se charger. Le lien et la note sont conservés ; réessayez une fois connecté."
 },
 it: {
   pageTitle: "Cadraj — per TikTok, senza account",
@@ -419,7 +425,8 @@ it: {
   openOnTiktok: "Apri su TikTok ↗",
   importInvalidAlert: "Questo file non sembra un export valido.",
   confirmClearAll: "Cancellare l'intera collezione salvata localmente? Non si può annullare.",
-  iframeTitle: "Player TikTok"
+  iframeTitle: "Player TikTok",
+  offlineNote: "Sei offline: il player TikTok non può caricarsi. Link e nota restano salvati; riprova quando sei connesso."
 },
 es: {
   pageTitle: "Cadraj — para TikTok, sin cuenta",
@@ -468,7 +475,8 @@ es: {
   openOnTiktok: "Abrir en TikTok ↗",
   importInvalidAlert: "Este archivo no parece una exportación válida.",
   confirmClearAll: "¿Borrar toda la colección guardada localmente? No se puede deshacer.",
-  iframeTitle: "Reproductor de TikTok"
+  iframeTitle: "Reproductor de TikTok",
+  offlineNote: "Estás sin conexión: el reproductor de TikTok no se puede cargar. El enlace y la nota siguen guardados; inténtalo de nuevo al conectarte."
 },
 pt: {
   pageTitle: "Cadraj — para o TikTok, sem conta",
@@ -517,7 +525,8 @@ pt: {
   openOnTiktok: "Abrir no TikTok ↗",
   importInvalidAlert: "Esse arquivo não parece uma exportação válida.",
   confirmClearAll: "Apagar toda a coleção salva localmente? Isso não pode ser desfeito.",
-  iframeTitle: "Player do TikTok"
+  iframeTitle: "Player do TikTok",
+  offlineNote: "Está offline: o player do TikTok não pode carregar. O link e a nota continuam guardados; tente de novo quando estiver ligado."
 },
 de: {
   pageTitle: "Cadraj — für TikTok, ohne Konto",
@@ -566,7 +575,8 @@ de: {
   openOnTiktok: "Auf TikTok öffnen ↗",
   importInvalidAlert: "Diese Datei sieht nicht wie ein gültiger Export aus.",
   confirmClearAll: "Die gesamte lokal gespeicherte Sammlung löschen? Das kann nicht rückgängig gemacht werden.",
-  iframeTitle: "TikTok-Player"
+  iframeTitle: "TikTok-Player",
+  offlineNote: "Du bist offline: Der TikTok-Player kann nicht laden. Link und Notiz bleiben gespeichert; versuche es erneut, sobald du verbunden bist."
 }
 };
 
@@ -890,8 +900,18 @@ function renderLightbox(){
   var iframe = document.createElement('iframe');
   iframe.src = buildPlayerSrc(video.id);
   iframe.setAttribute('allow','fullscreen');
+  iframe.setAttribute('sandbox','allow-scripts allow-same-origin allow-presentation allow-popups allow-popups-to-escape-sandbox');
+  iframe.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
   iframe.setAttribute('title', t('iframeTitle'));
-  lightboxFrameContainer.appendChild(iframe);
+  if(navigator.onLine === false){
+    var off = document.createElement('p');
+    off.className = 'lightbox__hint';
+    off.setAttribute('role','status');
+    off.textContent = t('offlineNote');
+    lightboxFrameContainer.appendChild(off);
+  } else {
+    lightboxFrameContainer.appendChild(iframe);
+  }
 
   lightboxMeta.innerHTML = '';
   var metaText = document.createElement('span');
