@@ -34,7 +34,8 @@ Cadraj este o aplicație dintr-un singur fișier HTML în care adaugi manual lin
 
 - Local: colecția (linkurile și notițele) se păstrează în `localStorage` al browserului, sub cheia `tiktok-fara-cont:v1`. Nu există cont și nici server propriu al aplicației; în codul verificat nu există apeluri `fetch`.
 - Rețea: aplicația nu este complet offline. La vizualizarea unui clip se încarcă în iframe playerul oficial `https://www.tiktok.com/player/v1/<id>`, deci TikTok primește cererea (și poate aplica propriile cookie-uri/politici). Butonul de profil și linkurile către clipuri deschid `www.tiktok.com`. Nu sunt alte gazde terțe în cod.
-- Textul din aplicație afirmă „fără cont · fără telemetrie · fără server", valabil pentru aplicația în sine, nu pentru playerul TikTok încărcat în iframe.
+- Subsolul aplicației spune acum explicit: „fără cont · fără telemetrie · fără server propriu · redarea unui clip încarcă playerul TikTok” (afirmația „fără telemetrie” privește aplicația în sine, nu playerul TikTok din iframe).
+- Mărci: TikTok este marcă a deținătorului ei, folosită descriptiv (aplicația nu este afiliată TikTok).
 
 ## Rulare locală / offline
 
