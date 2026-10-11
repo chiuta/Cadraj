@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; frame-src https://www.tiktok.com; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rRifz6fCVTKQgyFeyKlWlPCwGrJVL4miG7RWZcNye4Y='; style-src 'unsafe-inline'; img-src data: blob:; frame-src https://www.tiktok.com; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Cadraj — pentru TikTok, fără cont</title>
 <style>
 :root{
@@ -54,6 +54,8 @@ a{ color:var(--cool); }
 .hint{ margin-top:.5rem; font-size:.8rem; min-height:1.2em; }
 .hint--error{ color:var(--danger); }
 .hint--success{ color:var(--cool); }
+.hint--tip{ color:var(--text-dim); min-height:0; margin-top:.4rem; }
+@media print{ html,body{ background:#fff; color:#000; } .panel,.tools-panel,.info-panel,.lightbox,.lang-switch,#lang-switch,.frame__remove,.collection__actions{ display:none!important; } .collection__grid{ display:block; } .frame-card{ break-inside:avoid; margin:.2rem 0; } .frame__play-area::after{ content:""; } }
 
 .btn{
   font-family:var(--sans); font-size:.85rem; font-weight:600; padding:.65rem 1.1rem;
@@ -174,6 +176,7 @@ footer.foot{ text-align:center; color:var(--text-faint); font-size:.72rem; font-
       <input type="text" id="url-input" data-i18n-placeholder="addPlaceholder" placeholder="https://www.tiktok.com/@autor/video/...">
       <button type="submit" class="btn btn-primary" data-i18n="addButton">Adaugă</button>
     </div>
+    <p class="hint hint--tip" id="add-tip" data-i18n="addTip">Lipește un link sau mai multe deodată (separate prin spațiu sau rând nou).</p>
     <p class="hint" id="add-hint" role="status" aria-live="polite"></p>
   </form>
 </section>
@@ -197,6 +200,7 @@ footer.foot{ text-align:center; color:var(--text-faint); font-size:.72rem; font-
 
 <section class="panel tools-panel">
   <button type="button" class="btn btn-secondary btn-sm" id="export-btn" data-i18n="exportButton">Exportă (JSON)</button>
+  <button type="button" class="btn btn-secondary btn-sm" id="copy-btn" data-i18n="copyButton">Copiază linkurile</button>
   <button type="button" class="btn btn-secondary btn-sm" id="import-btn" data-i18n="importButton">Importă</button>
   <input type="file" id="import-file" accept="application/json" hidden>
   <button type="button" class="btn btn-danger btn-sm" id="clear-btn" data-i18n="clearButton">Șterge tot</button>
@@ -260,6 +264,12 @@ ro: {
   hintInvalid: "Nu recunosc linkul. Are nevoie de formatul .../@autor/video/ID.",
   hintDuplicate: "Clipul e deja în colecția lui @{user}.",
   hintAdded: "Cadru adăugat la coala lui @{user}.",
+  hintBulk: "{a} clipuri adăugate, {d} erau deja în colecție, {i} linkuri ignorate (nerecunoscute sau scurtate).",
+  copyButton: "Copiază linkurile",
+  copyDone: "{n} linkuri copiate în clipboard.",
+  copyEmpty: "Nu ai încă niciun clip de copiat.",
+  copyFail: "Copierea a eșuat. Folosește „Exportă (JSON)”.",
+  addTip: "Lipește un link sau mai multe deodată (separate prin spațiu sau rând nou).",
   frameCountOne: "cadru",
   frameCountOther: "cadre",
   profileOpenButton: "Profil ↗",
@@ -310,6 +320,12 @@ en: {
   hintInvalid: "I don't recognise that link. It needs the .../@author/video/ID format.",
   hintDuplicate: "That clip is already in @{user}'s collection.",
   hintAdded: "Frame added to @{user}'s contact sheet.",
+  hintBulk: "{a} clips added, {d} were already in the collection, {i} links ignored (unrecognized or shortened).",
+  copyButton: "Copy links",
+  copyDone: "{n} links copied to the clipboard.",
+  copyEmpty: "There are no clips to copy yet.",
+  copyFail: "Copy failed. Use \"Export (JSON)\" instead.",
+  addTip: "Paste one link or several at once (separated by spaces or new lines).",
   frameCountOne: "frame",
   frameCountOther: "frames",
   profileOpenButton: "Profile ↗",
@@ -360,6 +376,12 @@ fr: {
   hintInvalid: "Je ne reconnais pas ce lien. Il doit avoir le format .../@auteur/video/ID.",
   hintDuplicate: "Ce clip est déjà dans la collection de @{user}.",
   hintAdded: "Image ajoutée à la planche contact de @{user}.",
+  hintBulk: "{a} clips ajoutés, {d} étaient déjà dans la collection, {i} liens ignorés (non reconnus ou raccourcis).",
+  copyButton: "Copier les liens",
+  copyDone: "{n} liens copiés dans le presse-papiers.",
+  copyEmpty: "Aucun clip à copier pour l'instant.",
+  copyFail: "Échec de la copie. Utilisez « Exporter (JSON) ».",
+  addTip: "Collez un lien ou plusieurs à la fois (séparés par des espaces ou des retours à la ligne).",
   frameCountOne: "image",
   frameCountOther: "images",
   profileOpenButton: "Profil ↗",
@@ -410,6 +432,12 @@ it: {
   hintInvalid: "Non riconosco questo link. Deve avere il formato .../@autore/video/ID.",
   hintDuplicate: "Questo clip è già nella collezione di @{user}.",
   hintAdded: "Fotogramma aggiunto al provino di @{user}.",
+  hintBulk: "{a} clip aggiunti, {d} erano già nella raccolta, {i} link ignorati (non riconosciuti o abbreviati).",
+  copyButton: "Copia i link",
+  copyDone: "{n} link copiati negli appunti.",
+  copyEmpty: "Nessuna clip da copiare per ora.",
+  copyFail: "Copia non riuscita. Usa «Esporta (JSON)».",
+  addTip: "Incolla un link o più link insieme (separati da spazi o a capo).",
   frameCountOne: "fotogramma",
   frameCountOther: "fotogrammi",
   profileOpenButton: "Profilo ↗",
@@ -460,6 +488,12 @@ es: {
   hintInvalid: "No reconozco ese enlace. Necesita el formato .../@autor/video/ID.",
   hintDuplicate: "Ese clip ya está en la colección de @{user}.",
   hintAdded: "Fotograma añadido a la hoja de contacto de @{user}.",
+  hintBulk: "{a} clips añadidos, {d} ya estaban en la colección, {i} enlaces ignorados (no reconocidos o acortados).",
+  copyButton: "Copiar enlaces",
+  copyDone: "{n} enlaces copiados al portapapeles.",
+  copyEmpty: "Aún no hay clips que copiar.",
+  copyFail: "Error al copiar. Usa «Exportar (JSON)».",
+  addTip: "Pega un enlace o varios a la vez (separados por espacios o saltos de línea).",
   frameCountOne: "fotograma",
   frameCountOther: "fotogramas",
   profileOpenButton: "Perfil ↗",
@@ -510,6 +544,12 @@ pt: {
   hintInvalid: "Não reconheço esse link. Ele precisa do formato .../@autor/video/ID.",
   hintDuplicate: "Esse clipe já está na coleção de @{user}.",
   hintAdded: "Quadro adicionado à folha de contato de @{user}.",
+  hintBulk: "{a} clipes adicionados, {d} já estavam na coleção, {i} links ignorados (não reconhecidos ou encurtados).",
+  copyButton: "Copiar links",
+  copyDone: "{n} links copiados para a área de transferência.",
+  copyEmpty: "Ainda não há clipes para copiar.",
+  copyFail: "Falha ao copiar. Use «Exportar (JSON)».",
+  addTip: "Cole um link ou vários de uma vez (separados por espaços ou novas linhas).",
   frameCountOne: "quadro",
   frameCountOther: "quadros",
   profileOpenButton: "Perfil ↗",
@@ -560,6 +600,12 @@ de: {
   hintInvalid: "Diesen Link erkenne ich nicht. Er braucht das Format .../@autor/video/ID.",
   hintDuplicate: "Dieser Clip ist schon in der Sammlung von @{user}.",
   hintAdded: "Bild zum Kontaktbogen von @{user} hinzugefügt.",
+  hintBulk: "{a} Clips hinzugefügt, {d} waren bereits in der Sammlung, {i} Links ignoriert (nicht erkannt oder verkürzt).",
+  copyButton: "Links kopieren",
+  copyDone: "{n} Links in die Zwischenablage kopiert.",
+  copyEmpty: "Es gibt noch keine Clips zum Kopieren.",
+  copyFail: "Kopieren fehlgeschlagen. Nutze „Exportieren (JSON)“.",
+  addTip: "Füge einen Link oder mehrere auf einmal ein (durch Leerzeichen oder Zeilenumbrüche getrennt).",
   frameCountOne: "Bild",
   frameCountOther: "Bilder",
   profileOpenButton: "Profil ↗",
@@ -973,8 +1019,22 @@ var addHint = document.getElementById('add-hint');
 function setHint(el, text, kind){ el.textContent = text; el.className = 'hint hint--'+kind; }
 addForm.addEventListener('submit', function(e){
   e.preventDefault();
-  var result = parseInput(urlInput.value);
+  var raw = urlInput.value;
+  var result = parseInput(raw);
   if(result.error === 'empty'){ setHint(addHint, t('hintEmpty'), 'error'); return; }
+  var tokens = raw.split(/[\s,;]+/).filter(Boolean);
+  if(tokens.length > 1){
+    var added = 0, dup = 0, ignored = 0, last = null;
+    tokens.forEach(function(tok){
+      var r = parseInput(tok);
+      if(r.error){ ignored++; return; }
+      if(addVideo(r.username, r.id, r.kind) === 'added'){ added++; last = r; } else { dup++; }
+    });
+    if(added === 0 && dup === 0){ setHint(addHint, t(SHORTLINK_RE.test(raw) ? 'hintShortlink' : 'hintInvalid'), 'error'); return; }
+    setHint(addHint, t('hintBulk', {a: added, d: dup, i: ignored}), added ? 'success' : 'error');
+    if(added){ urlInput.value=''; render(); }
+    return;
+  }
   if(result.error === 'shortlink'){ setHint(addHint, t('hintShortlink'), 'error'); return; }
   if(result.error === 'invalid'){ setHint(addHint, t('hintInvalid'), 'error'); return; }
   var outcome = addVideo(result.username, result.id, result.kind);
@@ -1000,6 +1060,20 @@ document.getElementById('export-btn').addEventListener('click', function(){
   a.href = url; a.download = 'tiktok-fara-cont.json';
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
   setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+});
+document.getElementById('copy-btn').addEventListener('click', function(){
+  var lines = [];
+  orderedCollections().forEach(function(c){ c.data.videos.forEach(function(v){
+    lines.push('https://www.tiktok.com/@'+c.username+'/'+(v.kind === 'photo' ? 'photo' : 'video')+'/'+v.id);
+  }); });
+  if(!lines.length){ setHint(addHint, t('copyEmpty'), 'error'); return; }
+  var text = lines.join('\n');
+  function ok(){ setHint(addHint, t('copyDone', {n: lines.length}), 'success'); }
+  function fail(){ setHint(addHint, t('copyFail'), 'error'); }
+  try {
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(ok, fail); return; }
+  } catch(err){ /* fall through */ }
+  fail();
 });
 var importFile = document.getElementById('import-file');
 document.getElementById('import-btn').addEventListener('click', function(){ importFile.click(); });

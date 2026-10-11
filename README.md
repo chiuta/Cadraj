@@ -14,7 +14,9 @@ Cadraj este o aplicație dintr-un singur fișier HTML în care adaugi manual lin
 
 ## Funcții
 
-- Adăugare clip după link (`https://www.tiktok.com/@autor/video/...`), cu mesaj de stare.
+- Adăugare clip după link (`https://www.tiktok.com/@autor/video/...`), cu mesaj de stare; poți lipi mai multe linkuri deodată (separate prin spațiu, virgulă sau rând nou) — rezumatul spune câte au fost adăugate, câte erau deja în colecție și câte au fost ignorate.
+- „Copiază linkurile”: toate linkurile din colecție, câte unul pe rând, în clipboard.
+- Stil de tipărire: se tipărește doar lista de colecții.
 - Colecții pe autor, cu notiță text pentru fiecare clip.
 - Deschiderea unui profil TikTok într-un tab nou (câmpul „@autor", butonul „Deschide profilul ↗").
 - Căutare în colecții (după autor sau cuvinte din notițe).
@@ -49,6 +51,10 @@ Licența nu este încă declarată explicit în acest repository; vezi nota din 
 
 ## Istoric / Changelog
 
+### 11 octombrie 2026 (runda 6)
+- Adăugat: adăugare în masă de linkuri, butonul „Copiază linkurile”, stil de tipărire, mesaje noi în 7 limbi.
+- Securitate: CSP cu `script-src` pe hash (fără `'unsafe-inline'` pentru script).
+
 ### 11 octombrie 2026
 - Adăugat: atribut `sandbox` pe iframe-ul playerului TikTok și politică CSP (frame-src doar `www.tiktok.com`, fără connect-src).
 - Adăugat: mesaj clar în vizualizare când browserul e offline (în loc de un cadru gol), în toate cele 7 limbi.
@@ -60,7 +66,7 @@ Alexio — Alexandru-Ionuț Chiuță, contact: alexio@trom.tf
 
 ## English summary
 
-Cadraj is a single-file HTML tool for building a personal contact sheet of TikTok clips you add manually by link, grouped per author, played through TikTok's official embed player, with notes, search, lightbox, and JSON export/import. Data stays in localStorage; playback loads tiktok.com in an iframe, so it needs internet. 7 UI languages. It does not scrape profiles or download videos.
+Cadraj is a single-file HTML tool for building a personal contact sheet of TikTok clips you add manually by link, grouped per author, played through TikTok's official embed player, with notes, search, lightbox, bulk link paste, copy-all-links, and JSON export/import. Data stays in localStorage; playback loads tiktok.com in an iframe, so it needs internet. 7 UI languages. It does not scrape profiles or download videos.
 
 ## Audit
 
