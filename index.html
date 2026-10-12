@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-ZVpKxHEgh5nzPueCmeN2d5wWMnnQKvVkrrJguCTQgdI='; style-src 'unsafe-inline'; img-src data: blob:; frame-src https://www.tiktok.com; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="application-version" content="1.0.0">
+<meta name="last-updated" content="2026-10-12">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-R01dfjtlBhzQ61sKvi/8MIaM1Q5dEIlfo+ABQxFr96k='; style-src 'unsafe-inline'; img-src data: blob:; frame-src https://www.tiktok.com; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Cadraj — pentru TikTok, fără cont</title>
 <style>
 :root{
@@ -139,6 +141,7 @@ a{ color:var(--cool); }
 .info-panel__body{ padding-top:.6rem; }
 .info-panel__body p + p{ margin-top:.7rem; }
 
+footer.foot .appver{ margin-top:.6rem; }
 footer.foot{ text-align:center; color:var(--text-faint); font-size:.72rem; font-family:var(--mono); padding:1.5rem 1rem 3rem; }
 
 .lightbox{ position:fixed; inset:0; background:rgba(10,9,7,.94); display:flex; align-items:center; justify-content:center; z-index:100; padding:2rem 1rem; }
@@ -227,7 +230,9 @@ footer.foot{ text-align:center; color:var(--text-faint); font-size:.72rem; font-
 </details>
 </main>
 
-<footer class="foot" data-i18n="footerTag">fără cont · fără telemetrie · fără server propriu · redarea unui clip încarcă playerul TikTok</footer>
+<footer class="foot"><span data-i18n="footerTag">fără cont · fără telemetrie · fără server propriu · redarea unui clip încarcă playerul TikTok</span>
+<p class="appver"><span data-i18n="versionLabel">Versiune</span> <span id="app-version">v 1.0.0 · 2026-10-12</span></p>
+</footer>
 
 <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="TikTok">
   <div class="lightbox__inner">
@@ -263,6 +268,7 @@ ro: {
   infoP2: "Ce face: developează, prin playerul oficial de embed al TikTok, clipurile pe care tu le adaugi manual — după ce le găsești navigând profilul într-un tab separat. Nu descarcă fișiere video. E o coală de contact personală, curatoriată de tine, nu un robot de recoltat conținut.",
   infoP3: "Tot ce salvezi — linkurile adăugate — rămâne local, în acest browser. Nimic nu pleacă spre vreun server. Excepție: când redai un clip, playerul se încarcă de la TikTok, care primește adresa ta IP și ID-ul clipului.",
   footerTag: "fără cont · fără telemetrie · fără server propriu · redarea unui clip încarcă playerul TikTok",
+  versionLabel: "Versiune",
   lightboxCloseAria: "Închide",
   lightboxPrevAria: "Cadrul anterior",
   lightboxNextAria: "Cadrul următor",
@@ -324,6 +330,7 @@ en: {
   infoP2: "What it does: it develops, through TikTok's official embed player, the clips you add manually — after finding them by browsing the profile in a separate tab. It doesn't download video files. It's a personal contact sheet, curated by you, not a content-harvesting bot.",
   infoP3: "Everything you save — the links you add — stays local, in this browser. Nothing is sent to any server. Exception: when you play a clip, the player loads from TikTok, which receives your IP address and the clip ID.",
   footerTag: "no account · no telemetry · no server of its own · playing a clip loads the TikTok player",
+  versionLabel: "Version",
   lightboxCloseAria: "Close",
   lightboxPrevAria: "Previous frame",
   lightboxNextAria: "Next frame",
@@ -385,6 +392,7 @@ fr: {
   infoP2: "Ce qu'il fait : il développe, via le lecteur d'intégration officiel de TikTok, les clips que tu ajoutes toi-même — après les avoir trouvés en parcourant le profil dans un onglet séparé. Il ne télécharge aucun fichier vidéo. C'est une planche contact personnelle, que tu constitues toi-même, pas un robot de collecte de contenu.",
   infoP3: "Tout ce que tu enregistres — les liens ajoutés — reste local, dans ce navigateur. Rien n'est envoyé à un serveur quelconque. Exception : à la lecture d'un clip, le lecteur se charge depuis TikTok, qui reçoit ton adresse IP et l'identifiant du clip.",
   footerTag: "sans compte · sans télémétrie · sans serveur propre · la lecture d'un clip charge le lecteur TikTok",
+  versionLabel: "Version",
   lightboxCloseAria: "Fermer",
   lightboxPrevAria: "Image précédente",
   lightboxNextAria: "Image suivante",
@@ -446,6 +454,7 @@ it: {
   infoP2: "Cosa fa: sviluppa, tramite il player di embed ufficiale di TikTok, i clip che aggiungi tu manualmente — dopo averli trovati sfogliando il profilo in una scheda separata. Non scarica file video. È un provino a contatto personale, curato da te, non un bot che raccoglie contenuti.",
   infoP3: "Tutto ciò che salvi — i link aggiunti — resta locale, in questo browser. Niente viene inviato a un server. Eccezione: quando riproduci un clip, il player si carica da TikTok, che riceve il tuo indirizzo IP e l'ID del clip.",
   footerTag: "senza account · senza telemetria · senza server proprio · la riproduzione di un clip carica il player TikTok",
+  versionLabel: "Versione",
   lightboxCloseAria: "Chiudi",
   lightboxPrevAria: "Fotogramma precedente",
   lightboxNextAria: "Fotogramma successivo",
@@ -507,6 +516,7 @@ es: {
   infoP2: "Qué hace: revela, mediante el reproductor de inserción oficial de TikTok, los clips que tú añades manualmente — después de encontrarlos navegando el perfil en otra pestaña. No descarga archivos de vídeo. Es una hoja de contacto personal, curada por ti, no un robot que recolecta contenido.",
   infoP3: "Todo lo que guardas — los enlaces añadidos — permanece local, en este navegador. Nada se envía a ningún servidor. Excepción: al reproducir un clip, el reproductor se carga desde TikTok, que recibe tu dirección IP y el ID del clip.",
   footerTag: "sin cuenta · sin telemetría · sin servidor propio · reproducir un clip carga el reproductor de TikTok",
+  versionLabel: "Versión",
   lightboxCloseAria: "Cerrar",
   lightboxPrevAria: "Fotograma anterior",
   lightboxNextAria: "Fotograma siguiente",
@@ -568,6 +578,7 @@ pt: {
   infoP2: "O que faz: revela, através do player de incorporação oficial do TikTok, os clipes que você adiciona manualmente — depois de encontrá-los navegando pelo perfil em outra aba. Não baixa arquivos de vídeo. É uma folha de contato pessoal, organizada por você, não um robô de coleta de conteúdo.",
   infoP3: "Tudo o que você salva — os links adicionados — permanece local, neste navegador. Nada é enviado a nenhum servidor. Exceção: ao reproduzir um clipe, o player é carregado do TikTok, que recebe o seu endereço IP e o ID do clipe.",
   footerTag: "sem conta · sem telemetria · sem servidor próprio · reproduzir um clipe carrega o leitor do TikTok",
+  versionLabel: "Versão",
   lightboxCloseAria: "Fechar",
   lightboxPrevAria: "Quadro anterior",
   lightboxNextAria: "Próximo quadro",
@@ -629,6 +640,7 @@ de: {
   infoP2: "Was es tut: Es entwickelt über den offiziellen Embed-Player von TikTok die Clips, die du selbst hinzufügst — nachdem du sie beim Durchstöbern des Profils in einem separaten Tab gefunden hast. Es lädt keine Videodateien herunter. Es ist ein persönlicher, von dir kuratierter Kontaktbogen, kein Content-Erntebot.",
   infoP3: "Alles, was du speicherst — die hinzugefügten Links —, bleibt lokal in diesem Browser. Nichts wird an einen Server gesendet. Ausnahme: Beim Abspielen eines Clips wird der Player von TikTok geladen; TikTok erhält deine IP-Adresse und die Clip-ID.",
   footerTag: "ohne Konto · ohne Telemetrie · ohne eigenen Server · beim Abspielen eines Clips wird der TikTok-Player geladen",
+  versionLabel: "Version",
   lightboxCloseAria: "Schließen",
   lightboxPrevAria: "Vorheriges Bild",
   lightboxNextAria: "Nächstes Bild",

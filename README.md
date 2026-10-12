@@ -6,7 +6,7 @@ Cadraj — pentru TikTok, fără cont: o „coală de contact" personală pentru
 
 ![Captura de ecran](screenshot.png)
 
-**Ultima actualizare:** 11 octombrie 2026
+**Versiune:** 1.0.0 · **Ultima actualizare:** 12 octombrie 2026
 
 ## Ce este
 
@@ -51,6 +51,9 @@ Descarcă `index.html` și deschide-l în browser. Colecția și interfața func
 Licența nu este încă declarată explicit în acest repository; vezi nota din aplicație.
 
 ## Istoric / Changelog
+
+### 1.0.0 — 2026-10-12
+- Versiunea și data ultimei actualizări sunt afișate în aplicație (subsol, în 7 limbi).
 
 ### 11 octombrie 2026 (runda 7)
 - Reparat: deschiderea unui profil offline afișează acum un mesaj în aplicație (7 limbi), nu pagina de eroare a browserului.
