@@ -4,7 +4,7 @@
   "name": "Cadraj — pentru TikTok, fără cont",
   "version": "1.1.0",
   "updated": "2026-10-14",
-  "description": "",
+  "description": "Cadraj — pentru TikTok, fără cont: o „coală de contact” personală pentru clipuri TikTok adăugate manual.",
   "egress": [
     {
       "host": "www.tiktok.com",
@@ -19,8 +19,8 @@
     "localStorage"
   ],
   "storageKeys": [],
-  "sizeBytes": 219018,
-  "sha256": "885948e2b1f89d6a85b460bf55c40d041b971d54817f0412ed5312fc13a8ef57",
+  "sizeBytes": 219538,
+  "sha256": "0bc2f4430fa5cd2253460ee56beb239061e46ca9800d197b4040eb3b9fe10956",
   "csp": {
     "present": true,
     "directives": {
