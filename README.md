@@ -6,7 +6,7 @@ Cadraj — pentru TikTok, fără cont: o „coală de contact" personală pentru
 
 ![Captura de ecran](screenshot.png)
 
-**Versiune:** 1.0.0 · **Ultima actualizare:** 12 octombrie 2026
+**Versiune:** 1.1.0 · **Ultima actualizare:** 14 octombrie 2026
 
 ## Ce este
 
@@ -25,6 +25,14 @@ Cadraj este o aplicație dintr-un singur fișier HTML în care adaugi manual lin
 - Export și import al colecției ca fișier JSON; „Șterge tot".
 - Interfață în 7 limbi: RO, EN, FR, IT, ES, PT, DE.
 
+## Funcții noi (v1.1.0)
+
+- **Cod QR pentru o colecție**: conține doar numele de utilizator și id-urile cadrelor (fotografiile marcate cu `p`), nu notele și nu alte colecții. Maximum 40 de clipuri într-un cod, cu mesaj „40 din N”. Citirea dintr-o imagine QR recreează colecția; a doua citire nu duplică, QR-ul străin și numele de utilizator invalide (de ex. `__proto__`) sunt respinse, id-urile invalide ignorate.
+- **Mod de accesibilitate**: text mai mare (+25%), contrast ridicat, fără animații; preferințele se păstrează și intră în copia `.fff.json`.
+- **Player cu focus prins**: la deschidere fundalul devine inactiv (`inert`), Tab/Shift+Tab nu ies din player, Home/End/săgeți navighează, Esc închide și focusul revine pe cadrul de unde s-a deschis.
+- **Kit**: Transparență și copie `.fff.json` (colecțiile), `core, label, bundle, qr`.
+- **Limbi și traduceri**: Textele noi sunt în cele 7 limbi ale aplicației (RO, EN, FR, IT, ES, PT, DE); aplicația nu are maghiară în selector. Traducerile FR/IT/ES/PT/DE sunt automate și **neverificate de vorbitori nativi**; dialogul kitului are 8 limbi.
+
 ## Manual de utilizare
 
 1. Alege limba din butoanele RO / EN / FR / IT / ES / PT / DE.
@@ -36,6 +44,8 @@ Cadraj este o aplicație dintr-un singur fișier HTML în care adaugi manual lin
 7. „Exportă (JSON)" salvează colecția într-un fișier; „Importă" o încarcă înapoi; „Șterge tot" golește colecția.
 
 ## Confidențialitate și rețea
+
+- Kitul „fără frontiere” (`fff-kit`, modulele `core, label, bundle, qr`) este lipit în `index.html`: nu face cereri de rețea. Dialogul „Transparență” (clic pe versiune) arată rețeaua declarată (0 cereri externe), cheile din `localStorage`, SHA-256 al fișierului și oferă copie de siguranță `.fff.json` (opțional criptată cu parolă, AES-GCM). Codurile QR se generează și se citesc local; citirea se face doar dintr-o imagine aleasă de utilizator, fără cameră.
 
 - Local: colecția (linkurile și notițele) se păstrează în `localStorage` al browserului, sub cheia `tiktok-fara-cont:v1`. Nu există cont și nici server propriu al aplicației; în codul verificat nu există apeluri `fetch`.
 - Rețea: aplicația nu este complet offline (fără rețea, vizualizarea afișează un mesaj explicativ). La vizualizarea unui clip se încarcă, într-un iframe cu `sandbox`, playerul oficial `https://www.tiktok.com/player/v1/<id>`, deci TikTok primește cererea (și poate aplica propriile cookie-uri/politici). Butonul de profil și linkurile către clipuri deschid `www.tiktok.com`. Nu sunt alte gazde terțe în cod.
@@ -51,6 +61,8 @@ Descarcă `index.html` și deschide-l în browser. Colecția și interfața func
 Licența nu este încă declarată explicit în acest repository; vezi nota din aplicație.
 
 ## Istoric / Changelog
+
+- 1.1.0 — 2026-10-14: cod QR pentru colecții, mod de accesibilitate, player cu focus prins, kit „fără frontiere”. Teste: `tests/fff-r8.test.mjs`.
 
 ### 1.0.0 — 2026-10-12
 - Versiunea și data ultimei actualizări sunt afișate în aplicație (subsol, în 7 limbi).
