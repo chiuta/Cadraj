@@ -18,9 +18,11 @@
     "serviceWorker",
     "localStorage"
   ],
-  "storageKeys": [],
-  "sizeBytes": 221139,
-  "sha256": "d97fc68ded4ded73e74b587012c9ec820340a4204a924f9428102e141ddba1c2",
+  "storageKeys": [
+    "tiktok-fara-cont:v1"
+  ],
+  "sizeBytes": 221796,
+  "sha256": "7c5fef0557cad61c38006bd7b1c88e1b4b612c3d24e791cfba8731e73d482c9b",
   "csp": {
     "present": true,
     "directives": {
@@ -62,7 +64,7 @@
     ]
   },
   "kit": {
-    "version": "1.0.0",
+    "version": "1.1.1",
     "modules": [
       "core",
       "label",
