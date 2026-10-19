@@ -2,7 +2,9 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.1.0 · **Ultima actualizare:** 2026-10-14
+**Versiune:** 1.2.0 · **Ultima actualizare:** 2026-10-19
+
+Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
 Cadraj — pentru TikTok, fără cont: o „coală de contact" personală pentru clipuri TikTok adăugate manual.
 
@@ -25,7 +27,7 @@ Cadraj este o aplicație dintr-un singur fișier HTML în care adaugi manual lin
 - Marcaj „văzut” pe fiecare cadru (buton ○/✓; se bifează automat când deschizi cadrul în player), cu numărătoare „N văzute” pe coală; se păstrează în colecție și în exportul JSON.
 - Vizualizare mărită (lightbox) cu navigare ‹ / ›, tastele Săgeată stânga / Săgeată dreapta și Escape pentru închidere.
 - Export și import al colecției ca fișier JSON; „Șterge tot".
-- Interfață în 7 limbi: RO, EN, FR, IT, ES, PT, DE.
+- Interfață în 8 limbi: RO, EN, FR, IT, ES, PT, DE, HU.
 
 ## Funcții noi (v1.1.0)
 
@@ -33,11 +35,11 @@ Cadraj este o aplicație dintr-un singur fișier HTML în care adaugi manual lin
 - **Mod de accesibilitate**: text mai mare (+25%), contrast ridicat, fără animații; preferințele se păstrează și intră în copia `.fff.json`.
 - **Player cu focus prins**: la deschidere fundalul devine inactiv (`inert`), Tab/Shift+Tab nu ies din player, Home/End/săgeți navighează, Esc închide și focusul revine pe cadrul de unde s-a deschis.
 - **Kit**: Transparență și copie `.fff.json` (colecțiile), `core, label, bundle, qr`.
-- **Limbi și traduceri**: Textele noi sunt în cele 7 limbi ale aplicației (RO, EN, FR, IT, ES, PT, DE); aplicația nu are maghiară în selector. Traducerile FR/IT/ES/PT/DE sunt automate și **neverificate de vorbitori nativi**; dialogul kitului are 8 limbi.
+- **Limbi și traduceri**: Textele noi sunt în cele 8 limbi ale aplicației (RO, EN, FR, IT, ES, PT, DE, HU). Traducerile FR/IT/ES/PT/DE/HU sunt automate și **neverificate de vorbitori nativi**; dialogul kitului are 8 limbi.
 
 ## Manual de utilizare
 
-1. Alege limba din butoanele RO / EN / FR / IT / ES / PT / DE.
+1. Alege limba din butoanele RO / EN / FR / IT / ES / PT / DE / HU.
 2. Dacă vrei să găsești clipuri, scrie „@autor" în câmpul de profil și apasă „Deschide profilul ↗"; profilul se deschide pe TikTok, într-un tab separat.
 3. Copiază linkul unui clip, lipește-l în câmpul „Link către un clip TikTok" și apasă „Adaugă".
 4. Clipul apare în colecția autorului; poți scrie o notiță sub el (Enter confirmă).
@@ -88,7 +90,7 @@ Alexio — Alexandru-Ionuț Chiuță, contact: alexio@trom.tf
 
 ## English summary
 
-Cadraj is a single-file HTML tool for building a personal contact sheet of TikTok clips you add manually by link, grouped per author, played through TikTok's official embed player, with notes, search, lightbox, bulk link paste, copy-all-links, and JSON export/import. Data stays in localStorage; playback loads tiktok.com in an iframe, so it needs internet. 7 UI languages. It does not scrape profiles or download videos.
+Cadraj is a single-file HTML tool for building a personal contact sheet of TikTok clips you add manually by link, grouped per author, played through TikTok's official embed player, with notes, search, lightbox, bulk link paste, copy-all-links, and JSON export/import. Data stays in localStorage; playback loads tiktok.com in an iframe, so it needs internet. 8 UI languages. It does not scrape profiles or download videos.
 
 ## Audit
 

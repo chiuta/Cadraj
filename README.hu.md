@@ -2,7 +2,9 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.1.0 · **Utolsó frissítés:** 2026-10-14
+**Verzió:** 1.2.0 · **Utolsó frissítés:** 2026-10-19
+
+A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
 Cadraj — TikTokhoz, fiók nélkül: személyes „kontaktlap” kézzel hozzáadott TikTok-klipekhez.
 
@@ -25,7 +27,7 @@ A Cadraj egyetlen HTML-fájlból álló alkalmazás, amelyben kézzel adod hozz�
 - „Látott” jelölés minden képkockán (○/✓ gomb; automatikusan bejelölődik, amikor megnyitod a képkockát a lejátszóban), a lapon „N látott” számlálóval; megmarad a gyűjteményben és a JSON-exportban.
 - Nagyított nézet (lightbox) ‹ / › navigációval, Balra nyíl / Jobbra nyíl billentyűkkel és Escape-pel a bezáráshoz.
 - A gyűjtemény exportálása és importálása JSON-fájlként; „Összes törlése”.
-- Felület 7 nyelven: RO, EN, FR, IT, ES, PT, DE.
+- Felület 8 nyelven: RO, EN, FR, IT, ES, PT, DE, HU.
 
 ## Új funkciók (v1.1.0)
 
@@ -33,11 +35,11 @@ A Cadraj egyetlen HTML-fájlból álló alkalmazás, amelyben kézzel adod hozz�
 - **Akadálymentességi mód**: nagyobb szöveg (+25%), nagy kontraszt, animációk nélkül; a beállítások megmaradnak, és bekerülnek a `.fff.json` másolatba.
 - **Lejátszó csapdába ejtett fókusszal**: megnyitáskor a háttér inaktívvá válik (`inert`), a Tab/Shift+Tab nem lép ki a lejátszóból, a Home/End/nyilak navigálnak, az Esc bezár, és a fókusz visszatér arra a képkockára, ahonnan megnyitották.
 - **Készlet**: Átláthatóság és `.fff.json` másolat (a gyűjtemények), `core, label, bundle, qr`.
-- **Nyelvek és fordítások**: Az új szövegek az alkalmazás 7 nyelvén vannak (RO, EN, FR, IT, ES, PT, DE); az alkalmazás nyelvválasztójában nincs magyar. Az FR/IT/ES/PT/DE fordítások automatikusak, és **anyanyelvi beszélők nem ellenőrizték őket**; a készlet párbeszédablaka 8 nyelvű.
+- **Nyelvek és fordítások**: Az új szövegek az alkalmazás 8 nyelvén vannak (RO, EN, FR, IT, ES, PT, DE, HU). Az FR/IT/ES/PT/DE/HU fordítások automatikusak, és **anyanyelvi beszélők nem ellenőrizték őket**; a készlet párbeszédablaka 8 nyelvű.
 
 ## Használati útmutató
 
-1. Válaszd ki a nyelvet az RO / EN / FR / IT / ES / PT / DE gombokkal.
+1. Válaszd ki a nyelvet az RO / EN / FR / IT / ES / PT / DE / HU gombokkal.
 2. Ha klipeket szeretnél találni, írd be a „@szerző” nevet a profilmezőbe, és nyomd meg a „Profil megnyitása ↗” gombot; a profil a TikTokon nyílik meg, külön lapon.
 3. Másold ki egy klip hivatkozását, illeszd be a „Hivatkozás egy TikTok-klipre” mezőbe, és nyomd meg a „Hozzáadás” gombot.
 4. A klip megjelenik a szerző gyűjteményében; alá jegyzetet írhatsz (az Enter jóváhagyja).
@@ -88,7 +90,7 @@ Alexio — Alexandru-Ionuț Chiuță, elérhetőség: alexio@trom.tf
 
 ## Összefoglaló
 
-A Cadraj egyfájlos HTML-eszköz személyes kontaktlap építéséhez kézzel, hivatkozással hozzáadott TikTok-klipekből, szerzők szerint csoportosítva, a TikTok hivatalos beágyazott lejátszóján keresztül lejátszva, jegyzetekkel, kereséssel, lightboxszal, tömeges hivatkozás-beillesztéssel, az összes hivatkozás másolásával és JSON-exporttal/-importtal. Az adatok a localStorage-ban maradnak; a lejátszás a tiktok.com oldalt tölti be egy iframe-ben, ezért internet kell hozzá. 7 felületi nyelv. Nem gyűjt adatot a profilokról, és nem tölt le videókat.
+A Cadraj egyfájlos HTML-eszköz személyes kontaktlap építéséhez kézzel, hivatkozással hozzáadott TikTok-klipekből, szerzők szerint csoportosítva, a TikTok hivatalos beágyazott lejátszóján keresztül lejátszva, jegyzetekkel, kereséssel, lightboxszal, tömeges hivatkozás-beillesztéssel, az összes hivatkozás másolásával és JSON-exporttal/-importtal. Az adatok a localStorage-ban maradnak; a lejátszás a tiktok.com oldalt tölti be egy iframe-ben, ezért internet kell hozzá. 8 felületi nyelv. Nem gyűjt adatot a profilokról, és nem tölt le videókat.
 
 ## Audit
 

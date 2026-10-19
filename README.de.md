@@ -2,7 +2,9 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.1.0 · **Zuletzt aktualisiert:** 2026-10-14
+**Version:** 1.2.0 · **Zuletzt aktualisiert:** 2026-10-19
+
+Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
 Cadraj — für TikTok, ohne Konto: ein persönlicher „Kontaktbogen“ für manuell hinzugefügte TikTok-Clips.
 
@@ -25,7 +27,7 @@ Cadraj ist eine App in einer einzigen HTML-Datei, in der du manuell Links zu Tik
 - Markierung „gesehen“ an jedem Bild (Schaltfläche ○/✓; wird automatisch gesetzt, wenn du das Bild im Player öffnest), mit einem Zähler „N gesehen“ auf dem Bogen; sie bleibt in der Sammlung und im JSON-Export erhalten.
 - Vergrößerte Ansicht (Lightbox) mit Navigation ‹ / ›, den Tasten Pfeil links / Pfeil rechts und Escape zum Schließen.
 - Export und Import der Sammlung als JSON-Datei; „Alles löschen“.
-- Oberfläche in 7 Sprachen: RO, EN, FR, IT, ES, PT, DE.
+- Oberfläche in 8 Sprachen: RO, EN, FR, IT, ES, PT, DE, HU.
 
 ## Neue Funktionen (v1.1.0)
 
@@ -33,11 +35,11 @@ Cadraj ist eine App in einer einzigen HTML-Datei, in der du manuell Links zu Tik
 - **Barrierefreiheitsmodus**: größerer Text (+25 %), hoher Kontrast, keine Animationen; die Einstellungen bleiben erhalten und sind in der `.fff.json`-Kopie enthalten.
 - **Player mit gefangenem Fokus**: Beim Öffnen wird der Hintergrund inaktiv (`inert`), Tab/Umschalt+Tab verlassen den Player nicht, Pos1/Ende/Pfeile navigieren, Esc schließt und der Fokus kehrt zu dem Bild zurück, von dem aus geöffnet wurde.
 - **Kit**: Transparenz und `.fff.json`-Kopie (die Sammlungen), `core, label, bundle, qr`.
-- **Sprachen und Übersetzungen**: Die neuen Texte liegen in den 7 Sprachen der App vor (RO, EN, FR, IT, ES, PT, DE); die App hat kein Ungarisch in der Auswahl. Die Übersetzungen FR/IT/ES/PT/DE sind automatisch und **nicht von Muttersprachlern geprüft**; der Dialog des Kits hat 8 Sprachen.
+- **Sprachen und Übersetzungen**: Die neuen Texte liegen in den 8 Sprachen der App vor (RO, EN, FR, IT, ES, PT, DE, HU). Die Übersetzungen FR/IT/ES/PT/DE/HU sind automatisch und **nicht von Muttersprachlern geprüft**; der Dialog des Kits hat 8 Sprachen.
 
 ## Anleitung
 
-1. Wähle die Sprache über die Schaltflächen RO / EN / FR / IT / ES / PT / DE.
+1. Wähle die Sprache über die Schaltflächen RO / EN / FR / IT / ES / PT / DE / HU.
 2. Wenn du Clips finden willst, schreibe „@autor“ in das Profilfeld und drücke „Profil öffnen ↗“; das Profil öffnet sich auf TikTok in einem separaten Tab.
 3. Kopiere den Link eines Clips, füge ihn in das Feld „Link zu einem TikTok-Clip“ ein und drücke „Hinzufügen“.
 4. Der Clip erscheint in der Sammlung des Autors; du kannst darunter eine Notiz schreiben (Enter bestätigt).
@@ -88,7 +90,7 @@ Alexio — Alexandru-Ionuț Chiuță, Kontakt: alexio@trom.tf
 
 ## Zusammenfassung
 
-Cadraj ist ein Einzeldatei-HTML-Werkzeug zum Aufbau eines persönlichen Kontaktbogens aus TikTok-Clips, die manuell per Link hinzugefügt, nach Autor gruppiert und über den offiziellen Einbettungs-Player von TikTok abgespielt werden, mit Notizen, Suche, Lightbox, Massen-Einfügen von Links, Kopieren aller Links und JSON-Export/-Import. Die Daten bleiben im localStorage; die Wiedergabe lädt tiktok.com in einem iframe und braucht daher Internet. Oberfläche in 7 Sprachen. Es liest keine Profile aus und lädt keine Videos herunter.
+Cadraj ist ein Einzeldatei-HTML-Werkzeug zum Aufbau eines persönlichen Kontaktbogens aus TikTok-Clips, die manuell per Link hinzugefügt, nach Autor gruppiert und über den offiziellen Einbettungs-Player von TikTok abgespielt werden, mit Notizen, Suche, Lightbox, Massen-Einfügen von Links, Kopieren aller Links und JSON-Export/-Import. Die Daten bleiben im localStorage; die Wiedergabe lädt tiktok.com in einem iframe und braucht daher Internet. Oberfläche in 8 Sprachen. Es liest keine Profile aus und lädt keine Videos herunter.
 
 ## Audit
 

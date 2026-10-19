@@ -2,7 +2,9 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.1.0 · **Dernière mise à jour :** 2026-10-14
+**Version :** 1.2.0 · **Dernière mise à jour :** 2026-10-19
+
+Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
 Cadraj — pour TikTok, sans compte : une « planche-contact » personnelle pour des clips TikTok ajoutés manuellement.
 
@@ -25,7 +27,7 @@ Cadraj est une application en un seul fichier HTML dans laquelle vous ajoutez ma
 - Marque « vu » sur chaque cadre (bouton ○/✓ ; cochée automatiquement quand vous ouvrez le cadre dans le lecteur), avec un compteur « N vus » sur la planche ; elle est conservée dans la collection et dans l'export JSON.
 - Vue agrandie (lightbox) avec navigation ‹ / ›, touches Flèche gauche / Flèche droite et Échap pour fermer.
 - Export et import de la collection sous forme de fichier JSON ; « Tout supprimer ».
-- Interface en 7 langues : RO, EN, FR, IT, ES, PT, DE.
+- Interface en 8 langues : RO, EN, FR, IT, ES, PT, DE, HU.
 
 ## Nouvelles fonctions (v1.1.0)
 
@@ -33,11 +35,11 @@ Cadraj est une application en un seul fichier HTML dans laquelle vous ajoutez ma
 - **Mode d'accessibilité** : texte plus grand (+25 %), contraste élevé, sans animations ; les préférences sont conservées et incluses dans la copie `.fff.json`.
 - **Lecteur à focus piégé** : à l'ouverture, l'arrière-plan devient inactif (`inert`), Tab/Maj+Tab ne sortent pas du lecteur, Début/Fin/flèches naviguent, Échap ferme et le focus revient sur le cadre d'où il a été ouvert.
 - **Kit** : Transparence et copie `.fff.json` (les collections), `core, label, bundle, qr`.
-- **Langues et traductions** : les nouveaux textes sont dans les 7 langues de l'application (RO, EN, FR, IT, ES, PT, DE) ; l'application n'a pas le hongrois dans le sélecteur. Les traductions FR/IT/ES/PT/DE sont automatiques et **non vérifiées par des locuteurs natifs** ; la boîte de dialogue du kit a 8 langues.
+- **Langues et traductions** : les nouveaux textes sont dans les 8 langues de l'application (RO, EN, FR, IT, ES, PT, DE, HU). Les traductions FR/IT/ES/PT/DE/HU sont automatiques et **non vérifiées par des locuteurs natifs** ; la boîte de dialogue du kit a 8 langues.
 
 ## Mode d'emploi
 
-1. Choisissez la langue avec les boutons RO / EN / FR / IT / ES / PT / DE.
+1. Choisissez la langue avec les boutons RO / EN / FR / IT / ES / PT / DE / HU.
 2. Si vous voulez trouver des clips, écrivez « @auteur » dans le champ de profil et appuyez sur « Ouvrir le profil ↗ » ; le profil s'ouvre sur TikTok, dans un onglet séparé.
 3. Copiez le lien d'un clip, collez-le dans le champ « Lien vers un clip TikTok » et appuyez sur « Ajouter ».
 4. Le clip apparaît dans la collection de l'auteur ; vous pouvez écrire une note en dessous (Entrée valide).
@@ -88,7 +90,7 @@ Alexio — Alexandru-Ionuț Chiuță, contact : alexio@trom.tf
 
 ## Résumé
 
-Cadraj est un outil HTML monofichier pour constituer une planche-contact personnelle de clips TikTok ajoutés manuellement par lien, groupés par auteur, lus via le lecteur d'intégration officiel de TikTok, avec notes, recherche, lightbox, collage de liens en masse, copie de tous les liens et export/import JSON. Les données restent dans localStorage ; la lecture charge tiktok.com dans une iframe, elle nécessite donc Internet. Interface en 7 langues. Il ne moissonne pas les profils et ne télécharge pas de vidéos.
+Cadraj est un outil HTML monofichier pour constituer une planche-contact personnelle de clips TikTok ajoutés manuellement par lien, groupés par auteur, lus via le lecteur d'intégration officiel de TikTok, avec notes, recherche, lightbox, collage de liens en masse, copie de tous les liens et export/import JSON. Les données restent dans localStorage ; la lecture charge tiktok.com dans une iframe, elle nécessite donc Internet. Interface en 8 langues. Il ne moissonne pas les profils et ne télécharge pas de vidéos.
 
 ## Audit
 
