@@ -88,9 +88,9 @@ MIT pentru codul și structura aplicației — vezi fișierul `LICENSE`. Eventua
 
 Alexio — Alexandru-Ionuț Chiuță, contact: alexio@trom.tf
 
-## English summary
+## Rezumat
 
-Cadraj is a single-file HTML tool for building a personal contact sheet of TikTok clips you add manually by link, grouped per author, played through TikTok's official embed player, with notes, search, lightbox, bulk link paste, copy-all-links, and JSON export/import. Data stays in localStorage; playback loads tiktok.com in an iframe, so it needs internet. 8 UI languages. It does not scrape profiles or download videos.
+Cadraj este un instrument într-un singur fișier HTML pentru alcătuirea unui contact sheet personal de clipuri TikTok adăugate manual prin link, grupate pe autor, redate prin playerul oficial de încorporare TikTok, cu notițe, căutare, lightbox, lipire în masă de linkuri, copierea tuturor linkurilor și export/import JSON. Datele rămân în localStorage; redarea încarcă tiktok.com într-un iframe, deci necesită internet. 8 limbi de interfață. Nu extrage date din profiluri și nu descarcă videoclipuri.
 
 ## Audit
 
