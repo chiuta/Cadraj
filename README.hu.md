@@ -10,7 +10,7 @@ Cadraj — TikTokhoz, fiók nélkül: személyes „kontaktlap” kézzel hozzá
 
 **Online alkalmazás:** https://chiuta.github.io/Cadraj/
 
-![Képernyőkép](screenshot.png)
+![Képernyőkép](screenshot.hu.png)
 
 ## Mi ez
 

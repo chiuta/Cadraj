@@ -10,7 +10,7 @@ Cadraj — pentru TikTok, fără cont: o „coală de contact" personală pentru
 
 **Live:** https://chiuta.github.io/Cadraj/
 
-![Captura de ecran](screenshot.png)
+![Captura de ecran](screenshot.ro.png)
 
 ## Ce este
 

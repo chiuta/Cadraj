@@ -10,7 +10,7 @@ Cadraj — for TikTok, without an account: a personal "contact sheet" for TikTok
 
 **Live:** https://chiuta.github.io/Cadraj/
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.en.png)
 
 ## What it is
 

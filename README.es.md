@@ -10,7 +10,7 @@ Cadraj — para TikTok, sin cuenta: una «hoja de contactos» personal para clip
 
 **Aplicación en línea:** https://chiuta.github.io/Cadraj/
 
-![Captura de pantalla](screenshot.png)
+![Captura de pantalla](screenshot.es.png)
 
 ## Qué es
 

@@ -10,7 +10,7 @@ Cadraj — per TikTok, senza account: un «provino a contatto» personale per cl
 
 **Applicazione online:** https://chiuta.github.io/Cadraj/
 
-![Schermata](screenshot.png)
+![Schermata](screenshot.it.png)
 
 ## Che cos'è
 

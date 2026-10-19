@@ -10,7 +10,7 @@ Cadraj — pour TikTok, sans compte : une « planche-contact » personnelle pour
 
 **Application en ligne :** https://chiuta.github.io/Cadraj/
 
-![Capture d'écran](screenshot.png)
+![Capture d'écran](screenshot.fr.png)
 
 ## Ce que c'est
 

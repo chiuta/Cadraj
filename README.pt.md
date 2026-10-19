@@ -10,7 +10,7 @@ Cadraj — para o TikTok, sem conta: uma «folha de contactos» pessoal para cli
 
 **Aplicação online:** https://chiuta.github.io/Cadraj/
 
-![Captura de ecrã](screenshot.png)
+![Captura de ecrã](screenshot.pt.png)
 
 ## O que é
 
