@@ -1,93 +1,95 @@
 # Cadraj
 
-Cadraj — pentru TikTok, fără cont: o „coală de contact" personală pentru clipuri TikTok adăugate manual.
+**English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
+
+**Version:** 1.1.0 · **Last updated:** 2026-10-14
+
+Cadraj — for TikTok, without an account: a personal "contact sheet" for TikTok clips added manually.
 
 **Live:** https://chiuta.github.io/Cadraj/
 
-![Captura de ecran](screenshot.png)
+![Screenshot](screenshot.png)
 
-**Versiune:** 1.1.0 · **Ultima actualizare:** 14 octombrie 2026
+## What it is
 
-## Ce este
+Cadraj is a single-HTML-file app in which you manually add links to an author's TikTok clips, and the app groups them into collections (one per author) and displays them through TikTok's official embed player, with no account and no algorithmic feed. The app states explicitly what it does not do: it does not automatically list a profile's clips, it does not bypass TikTok's protections and it does not download video files.
 
-Cadraj este o aplicație dintr-un singur fișier HTML în care adaugi manual linkuri către clipuri TikTok ale unui autor, iar aplicația le grupează pe colecții (câte una pe autor) și le afișează prin playerul oficial de embed TikTok, fără cont și fără feed algoritmic. Aplicația spune explicit ce nu face: nu enumeră automat clipurile unui profil, nu ocolește protecțiile TikTok și nu descarcă fișiere video.
+## Features
 
-## Funcții
+- Adding a clip by link (`https://www.tiktok.com/@author/video/...`), with a status message; you can paste several links at once (separated by space, comma or new line) — the summary says how many were added, how many were already in the collection and how many were ignored.
+- "Copy links": all the links in the collection, one per line, to the clipboard.
+- Print style: only the list of collections is printed.
+- Collections per author, with a text note for each clip.
+- Opening a TikTok profile in a new tab ("@author" field, "Open profile ↗" button); offline, an explanatory message appears instead of the browser's error page.
+- Search in collections (by author or words in notes) and the "Unseen frames only" filter.
+- "Seen" mark on each frame (○/✓ button; ticked automatically when you open the frame in the player), with an "N seen" counter on the sheet; it is kept in the collection and in the JSON export.
+- Enlarged view (lightbox) with ‹ / › navigation, Left arrow / Right arrow keys and Escape to close.
+- Export and import of the collection as a JSON file; "Delete all".
+- Interface in 7 languages: RO, EN, FR, IT, ES, PT, DE.
 
-- Adăugare clip după link (`https://www.tiktok.com/@autor/video/...`), cu mesaj de stare; poți lipi mai multe linkuri deodată (separate prin spațiu, virgulă sau rând nou) — rezumatul spune câte au fost adăugate, câte erau deja în colecție și câte au fost ignorate.
-- „Copiază linkurile”: toate linkurile din colecție, câte unul pe rând, în clipboard.
-- Stil de tipărire: se tipărește doar lista de colecții.
-- Colecții pe autor, cu notiță text pentru fiecare clip.
-- Deschiderea unui profil TikTok într-un tab nou (câmpul „@autor", butonul „Deschide profilul ↗"); offline apare un mesaj explicativ în loc de pagina de eroare a browserului.
-- Căutare în colecții (după autor sau cuvinte din notițe) și filtrul „Doar cadrele nevăzute”.
-- Marcaj „văzut” pe fiecare cadru (buton ○/✓; se bifează automat când deschizi cadrul în player), cu numărătoare „N văzute” pe coală; se păstrează în colecție și în exportul JSON.
-- Vizualizare mărită (lightbox) cu navigare ‹ / ›, tastele Săgeată stânga / Săgeată dreapta și Escape pentru închidere.
-- Export și import al colecției ca fișier JSON; „Șterge tot".
-- Interfață în 7 limbi: RO, EN, FR, IT, ES, PT, DE.
+## New features (v1.1.0)
 
-## Funcții noi (v1.1.0)
+- **QR code for a collection**: it contains only the username and the frame ids (photos marked with `p`), not the notes and not other collections. At most 40 clips in one code, with the message "40 of N". Reading from a QR image recreates the collection; a second read does not duplicate, a foreign QR and invalid usernames (e.g. `__proto__`) are rejected, invalid ids ignored.
+- **Accessibility mode**: larger text (+25%), high contrast, no animations; the preferences are kept and included in the `.fff.json` copy.
+- **Player with trapped focus**: on opening, the background becomes inactive (`inert`), Tab/Shift+Tab do not leave the player, Home/End/arrows navigate, Esc closes and focus returns to the frame it was opened from.
+- **Kit**: Transparency and `.fff.json` copy (the collections), `core, label, bundle, qr`.
+- **Languages and translations**: The new texts are in the app's 7 languages (RO, EN, FR, IT, ES, PT, DE); the app has no Hungarian in the selector. The FR/IT/ES/PT/DE translations are automatic and **not verified by native speakers**; the kit dialog has 8 languages.
 
-- **Cod QR pentru o colecție**: conține doar numele de utilizator și id-urile cadrelor (fotografiile marcate cu `p`), nu notele și nu alte colecții. Maximum 40 de clipuri într-un cod, cu mesaj „40 din N”. Citirea dintr-o imagine QR recreează colecția; a doua citire nu duplică, QR-ul străin și numele de utilizator invalide (de ex. `__proto__`) sunt respinse, id-urile invalide ignorate.
-- **Mod de accesibilitate**: text mai mare (+25%), contrast ridicat, fără animații; preferințele se păstrează și intră în copia `.fff.json`.
-- **Player cu focus prins**: la deschidere fundalul devine inactiv (`inert`), Tab/Shift+Tab nu ies din player, Home/End/săgeți navighează, Esc închide și focusul revine pe cadrul de unde s-a deschis.
-- **Kit**: Transparență și copie `.fff.json` (colecțiile), `core, label, bundle, qr`.
-- **Limbi și traduceri**: Textele noi sunt în cele 7 limbi ale aplicației (RO, EN, FR, IT, ES, PT, DE); aplicația nu are maghiară în selector. Traducerile FR/IT/ES/PT/DE sunt automate și **neverificate de vorbitori nativi**; dialogul kitului are 8 limbi.
+## User guide
 
-## Manual de utilizare
+1. Choose the language from the RO / EN / FR / IT / ES / PT / DE buttons.
+2. If you want to find clips, type "@author" in the profile field and press "Open profile ↗"; the profile opens on TikTok, in a separate tab.
+3. Copy a clip's link, paste it into the "Link to a TikTok clip" field and press "Add".
+4. The clip appears in the author's collection; you can write a note under it (Enter confirms).
+5. Click a clip to open it in the player; you navigate with ‹ › or with the keyboard arrows, and close with ✕ or Escape.
+6. Use "Search in collections" to filter.
+7. "Export (JSON)" saves the collection to a file; "Import" loads it back; "Delete all" empties the collection.
 
-1. Alege limba din butoanele RO / EN / FR / IT / ES / PT / DE.
-2. Dacă vrei să găsești clipuri, scrie „@autor" în câmpul de profil și apasă „Deschide profilul ↗"; profilul se deschide pe TikTok, într-un tab separat.
-3. Copiază linkul unui clip, lipește-l în câmpul „Link către un clip TikTok" și apasă „Adaugă".
-4. Clipul apare în colecția autorului; poți scrie o notiță sub el (Enter confirmă).
-5. Apasă pe un clip pentru a-l deschide în player; navighezi cu ‹ › sau cu săgețile de la tastatură, închizi cu ✕ sau Escape.
-6. Folosește „Caută în colecții" pentru a filtra.
-7. „Exportă (JSON)" salvează colecția într-un fișier; „Importă" o încarcă înapoi; „Șterge tot" golește colecția.
+## Privacy and network
 
-## Confidențialitate și rețea
+- The "without borders" kit (`fff-kit`, modules `core, label, bundle, qr`) is pasted into `index.html`: it makes no network requests. The "Transparency" dialog (click on the version) shows the declared network (0 external requests), the `localStorage` keys, the SHA-256 of the file and offers a `.fff.json` backup copy (optionally encrypted with a password, AES-GCM). QR codes are generated and read locally; reading is done only from an image chosen by the user, without the camera.
 
-- Kitul „fără frontiere” (`fff-kit`, modulele `core, label, bundle, qr`) este lipit în `index.html`: nu face cereri de rețea. Dialogul „Transparență” (clic pe versiune) arată rețeaua declarată (0 cereri externe), cheile din `localStorage`, SHA-256 al fișierului și oferă copie de siguranță `.fff.json` (opțional criptată cu parolă, AES-GCM). Codurile QR se generează și se citesc local; citirea se face doar dintr-o imagine aleasă de utilizator, fără cameră.
+- Local: the collection (links and notes) is kept in the browser's `localStorage`, under the key `tiktok-fara-cont:v1`. There is no account and no server of the app's own; in the audited code there are no `fetch` calls.
+- Network: the app is not fully offline (without a network, the view shows an explanatory message). When a clip is viewed, the official player `https://www.tiktok.com/player/v1/<id>` is loaded in a `sandbox`ed iframe, so TikTok receives the request (and may apply its own cookies/policies). The profile button and the links to clips open `www.tiktok.com`. There are no other third-party hosts in the code.
+- The app's footer now states explicitly: "no account · no telemetry · no server of its own · playing a clip loads the TikTok player" (the claim "no telemetry" concerns the app itself, not the TikTok player in the iframe).
+- Trademarks: TikTok is a trademark of its owner, used descriptively (the app is not affiliated with TikTok).
 
-- Local: colecția (linkurile și notițele) se păstrează în `localStorage` al browserului, sub cheia `tiktok-fara-cont:v1`. Nu există cont și nici server propriu al aplicației; în codul verificat nu există apeluri `fetch`.
-- Rețea: aplicația nu este complet offline (fără rețea, vizualizarea afișează un mesaj explicativ). La vizualizarea unui clip se încarcă, într-un iframe cu `sandbox`, playerul oficial `https://www.tiktok.com/player/v1/<id>`, deci TikTok primește cererea (și poate aplica propriile cookie-uri/politici). Butonul de profil și linkurile către clipuri deschid `www.tiktok.com`. Nu sunt alte gazde terțe în cod.
-- Subsolul aplicației spune acum explicit: „fără cont · fără telemetrie · fără server propriu · redarea unui clip încarcă playerul TikTok” (afirmația „fără telemetrie” privește aplicația în sine, nu playerul TikTok din iframe).
-- Mărci: TikTok este marcă a deținătorului ei, folosită descriptiv (aplicația nu este afiliată TikTok).
+## Running locally / offline
 
-## Rulare locală / offline
+Download `index.html` and open it in a browser. The collection and the interface work locally; playing clips and opening profiles require internet.
 
-Descarcă `index.html` și deschide-l în browser. Colecția și interfața funcționează local; redarea clipurilor și deschiderea profilurilor necesită internet.
+## License
 
-## Licență
+MIT for the app's code and structure — see the `LICENSE` file. Any third-party libraries included in the file keep their own licenses.
 
-MIT pentru codul și structura aplicației — vezi fișierul `LICENSE`. Eventualele biblioteci terțe incluse în fișier își păstrează licențele proprii.
+## History / Changelog
 
-## Istoric / Changelog
-
-- 1.1.0 — 2026-10-14: cod QR pentru colecții, mod de accesibilitate, player cu focus prins, kit „fără frontiere”. Teste: `tests/fff-r8.test.mjs`.
+- 1.1.0 — 2026-10-14: QR code for collections, accessibility mode, player with trapped focus, "without borders" kit. Tests: `tests/fff-r8.test.mjs`.
 
 ### 1.0.0 — 2026-10-12
-- Versiunea și data ultimei actualizări sunt afișate în aplicație (subsol, în 7 limbi).
+- The version and the date of the last update are displayed in the app (footer, in 7 languages).
 
-### 11 octombrie 2026 (runda 7)
-- Reparat: deschiderea unui profil offline afișează acum un mesaj în aplicație (7 limbi), nu pagina de eroare a browserului.
-- Nou: marcaj „văzut” per cadru, numărătoare pe coală și filtrul „Doar cadrele nevăzute” (cheie nouă `seen` în colecția salvată/exportată).
+### 11 October 2026 (round 7)
+- Fixed: opening a profile offline now displays a message in the app (7 languages), not the browser's error page.
+- New: "seen" mark per frame, counter on the sheet and the "Unseen frames only" filter (new key `seen` in the saved/exported collection).
 
-### 11 octombrie 2026 (runda 6)
-- Adăugat: adăugare în masă de linkuri, butonul „Copiază linkurile”, stil de tipărire, mesaje noi în 7 limbi.
-- Securitate: CSP cu `script-src` pe hash (fără `'unsafe-inline'` pentru script).
+### 11 October 2026 (round 6)
+- Added: bulk link adding, the "Copy links" button, print style, new messages in 7 languages.
+- Security: CSP with `script-src` by hash (no `'unsafe-inline'` for script).
 
-### 11 octombrie 2026
-- Adăugat: atribut `sandbox` pe iframe-ul playerului TikTok și politică CSP (frame-src doar `www.tiktok.com`, fără connect-src).
-- Adăugat: mesaj clar în vizualizare când browserul e offline (în loc de un cadru gol), în toate cele 7 limbi.
-- Reparat: conținutul paginii este acum încadrat în `<main>` (0 violări axe-core la 1280 și 360 px).
+### 11 October 2026
+- Added: `sandbox` attribute on the TikTok player iframe and CSP policy (frame-src only `www.tiktok.com`, no connect-src).
+- Added: clear message in the view when the browser is offline (instead of an empty frame), in all 7 languages.
+- Fixed: the page content is now wrapped in `<main>` (0 axe-core violations at 1280 and 360 px).
 
-## Autor
+## Author
 
 Alexio — Alexandru-Ionuț Chiuță, contact: alexio@trom.tf
 
-## English summary
+## Summary
 
 Cadraj is a single-file HTML tool for building a personal contact sheet of TikTok clips you add manually by link, grouped per author, played through TikTok's official embed player, with notes, search, lightbox, bulk link paste, copy-all-links, and JSON export/import. Data stays in localStorage; playback loads tiktok.com in an iframe, so it needs internet. 7 UI languages. It does not scrape profiles or download videos.
 
 ## Audit
 
-Audit: 2026-10-10 — verificat: 0 erori JS, 0 probleme axe serious/critical; singurul trafic extern este iframe-ul playerului oficial `tiktok.com/player/v1/<id>` (ID-ul trece prin validare `\d{5,25}`, importul JSON este sanitizat, textele sunt inserate cu `textContent`). Subsolul „fără cont · fără telemetrie · fără server” se referă la aplicație; la redarea unui clip TikTok primește adresa IP și ID-ul clipului (aplicația spune asta în panoul „Info”). Aplicația nu este afiliată TikTok; respectarea termenilor TikTok pentru embed-uri rămâne în sarcina utilizatorului.
+Audit: 2026-10-10 — verified: 0 JS errors, 0 serious/critical axe issues; the only external traffic is the official player iframe `tiktok.com/player/v1/<id>` (the ID goes through `\d{5,25}` validation, the JSON import is sanitized, texts are inserted with `textContent`). The footer "no account · no telemetry · no server" refers to the app; when a TikTok clip is played, TikTok receives the IP address and the clip ID (the app says so in the "Info" panel). The app is not affiliated with TikTok; compliance with TikTok's terms for embeds remains the user's responsibility.
