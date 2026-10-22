@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.2.1 · **Ultimo aggiornamento:** 2026-10-22
+**Versione:** 1.2.2 · **Ultimo aggiornamento:** 2026-10-22
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,6 +68,11 @@ MIT per il codice e la struttura dell'applicazione — vedi il file `LICENSE`. E
 
 - 1.2.1 — 2026-10-22: **correzione**: interfaccia in ungherese completata (stringhe del codice QR e pannello di accessibilità, compreso il suggerimento sui tasti del player).
 - 1.1.0 — 2026-10-14: codice QR per le raccolte, modalità di accessibilità, player con focus intrappolato, kit «senza frontiere». Test: `tests/fff-r8.test.mjs`.
+
+### 1.2.2 — 2026-10-22
+- Le finestre bloccanti alert()/confirm() sono state sostituite: gli errori di importazione appaiono nella riga di stato della pagina e le conferme di eliminazione usano una finestra accessibile e tradotta.
+- Aree tattili più grandi (selettore della lingua e pulsanti piccoli di almeno 32–36 px).
+- Mobile: nessun testo sotto i 12 px e aree tattili di almeno 24 px (WCAG 2.5.8).
 
 ### 1.0.0 — 2026-10-12
 - La versione e la data dell'ultimo aggiornamento sono mostrate nell'applicazione (piè di pagina, in 7 lingue).

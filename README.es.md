@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.2.1 · **Última actualización:** 2026-10-22
+**Versión:** 1.2.2 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,6 +68,11 @@ MIT para el código y la estructura de la aplicación — véase el archivo `LIC
 
 - 1.2.1 — 2026-10-22: **corrección**: interfaz en húngaro completada (cadenas del código QR y panel de accesibilidad, incluida la pista de las teclas del reproductor).
 - 1.1.0 — 2026-10-14: código QR para colecciones, modo de accesibilidad, reproductor con foco atrapado, kit «sin fronteras». Pruebas: `tests/fff-r8.test.mjs`.
+
+### 1.2.2 — 2026-10-22
+- Se sustituyeron los cuadros bloqueantes alert()/confirm(): los errores de importación aparecen en la línea de estado de la página y las confirmaciones de borrado usan un diálogo accesible y traducido.
+- Áreas táctiles más grandes (selector de idioma y botones pequeños de al menos 32–36 px).
+- Móvil: ningún texto por debajo de 12 px y áreas táctiles de al menos 24 px (WCAG 2.5.8).
 
 ### 1.0.0 — 2026-10-12
 - La versión y la fecha de la última actualización se muestran en la aplicación (pie, en 7 idiomas).

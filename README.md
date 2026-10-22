@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.2.1 · **Last updated:** 2026-10-22
+**Version:** 1.2.2 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,6 +68,11 @@ MIT for the app's code and structure — see the `LICENSE` file. Any third-party
 
 - 1.2.1 — 2026-10-22: **fix**: Hungarian interface completed (QR code strings and accessibility panel, including the player-keys hint).
 - 1.1.0 — 2026-10-14: QR code for collections, accessibility mode, player with trapped focus, "without borders" kit. Tests: `tests/fff-r8.test.mjs`.
+
+### 1.2.2 — 2026-10-22
+- The blocking alert()/confirm() boxes were replaced: import errors appear in the page's status line, and the delete/clear confirmations use a translated accessible dialog.
+- Larger touch targets (language switcher and small buttons at least 32–36 px).
+- Mobile: no text below 12 px and touch targets of at least 24 px (WCAG 2.5.8).
 
 ### 1.0.0 — 2026-10-12
 - The version and the date of the last update are displayed in the app (footer, in 7 languages).

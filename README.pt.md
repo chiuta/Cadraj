@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.2.1 · **Última atualização:** 2026-10-22
+**Versão:** 1.2.2 · **Última atualização:** 2026-10-22
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,6 +68,11 @@ MIT para o código e a estrutura da aplicação — ver o ficheiro `LICENSE`. Ev
 
 - 1.2.1 — 2026-10-22: **correção**: interface em húngaro completada (cadeias do código QR e painel de acessibilidade, incluindo a dica das teclas do leitor).
 - 1.1.0 — 2026-10-14: código QR para coleções, modo de acessibilidade, leitor com foco preso, kit «sem fronteiras». Testes: `tests/fff-r8.test.mjs`.
+
+### 1.2.2 — 2026-10-22
+- As caixas bloqueantes alert()/confirm() foram substituídas: os erros de importação surgem na linha de estado da página e as confirmações de eliminação usam um diálogo acessível e traduzido.
+- Áreas táteis maiores (seletor de idioma e botões pequenos com pelo menos 32–36 px).
+- Telemóvel: nenhum texto abaixo de 12 px e áreas táteis de pelo menos 24 px (WCAG 2.5.8).
 
 ### 1.0.0 — 2026-10-12
 - A versão e a data da última atualização são apresentadas na aplicação (rodapé, em 7 línguas).

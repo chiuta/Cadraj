@@ -48,7 +48,7 @@ console.log('Pornire și versiune');
   const {ctx, p, errs, net} = await open(1280, 800);
   t('0 pageerror/CSP', errs.length === 0, errs.join('|'));
   t('0 cereri de rețea', net() === 0);
-  t('versiune 1.2.1', await p.evaluate(() => document.querySelector('meta[name=application-version]').content === '1.2.1' && /v 1\.2\.1 · 2026-10-22/.test(document.getElementById('app-version').textContent)));
+  t('versiune 1.2.2', await p.evaluate(() => document.querySelector('meta[name=application-version]').content === '1.2.2' && /v 1\.2\.2 · 2026-10-22/.test(document.getElementById('app-version').textContent)));
   t('kit prezent', await p.evaluate(() => !!(window.FFF && FFF.label && FFF.bundle && FFF.qr)));
   await ctx.close();
 }
@@ -66,7 +66,7 @@ console.log('Cod QR pentru colecție');
   const png = await qrPng(p);
   await p.keyboard.press('Escape'); await p.waitForTimeout(200);
   t('Escape închide și readuce focusul pe butonul QR', (await p.locator('dialog.r8-dlg').count()) === 0 && (await p.evaluate(() => document.activeElement.textContent)) === 'QR');
-  await p.click('#clear-btn');
+  await p.click('#clear-btn'); await p.locator('dialog.cfm .cfm-y').click();
   t('colecțiile șterse', (await p.locator('.collection').count()) === 0);
   await p.setInputFiles('#qr-file', {name: 'q.png', mimeType: 'image/png', buffer: Buffer.from(png)}); await p.waitForTimeout(900);
   t('imaginea QR recreează colecția', (await p.locator('.collection').count()) === 1 && (await p.locator('.collection__title').textContent()) === '@tester' && (await p.locator('.frame-card').count()) === 3, await p.textContent('#add-hint'));

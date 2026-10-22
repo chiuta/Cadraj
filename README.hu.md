@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.2.1 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.2.2 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,6 +68,11 @@ MIT az alkalmazás kódjára és szerkezetére — lásd a `LICENSE` fájlt. A f
 
 - 1.2.1 — 2026-10-22: **javítás**: a magyar felület kiegészítve (QR-kód szövegei és a kisegítő lehetőségek panel, a lejátszó billentyűinek súgójával együtt).
 - 1.1.0 — 2026-10-14: QR-kód gyűjteményekhez, akadálymentességi mód, lejátszó csapdába ejtett fókusszal, „határok nélküli” készlet. Tesztek: `tests/fff-r8.test.mjs`.
+
+### 1.2.2 — 2026-10-22
+- A blokkoló alert()/confirm() ablakokat lecserélte: az importhibák az oldal állapotsorában jelennek meg, a törlési megerősítések lefordított, akadálymentes párbeszédablakot használnak.
+- Nagyobb érintési célpontok (a nyelvváltó és a kis gombok legalább 32–36 px).
+- Mobil: nincs 12 px alatti szöveg, az érintési célpontok legalább 24 px-esek (WCAG 2.5.8).
 
 ### 1.0.0 — 2026-10-12
 - A verzió és az utolsó frissítés dátuma megjelenik az alkalmazásban (lábléc, 7 nyelven).

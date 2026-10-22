@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.2.1 · **Zuletzt aktualisiert:** 2026-10-22
+**Version:** 1.2.2 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,6 +68,11 @@ MIT für den Code und die Struktur der App — siehe Datei `LICENSE`. Gegebenenf
 
 - 1.2.1 — 2026-10-22: **Korrektur**: ungarische Oberfläche vervollständigt (QR-Code-Texte und Bedienungshilfen, einschließlich des Hinweises zu den Player-Tasten).
 - 1.1.0 — 2026-10-14: QR-Code für Sammlungen, Barrierefreiheitsmodus, Player mit gefangenem Fokus, Kit „ohne Grenzen“. Tests: `tests/fff-r8.test.mjs`.
+
+### 1.2.2 — 2026-10-22
+- Die blockierenden alert()/confirm()-Dialoge wurden ersetzt: Importfehler erscheinen in der Statuszeile der Seite, und Lösch-Bestätigungen nutzen einen barrierefreien, übersetzten Dialog.
+- Größere Touch-Ziele (Sprachumschalter und kleine Schaltflächen mindestens 32–36 px).
+- Mobil: kein Text unter 12 px und Touch-Ziele von mindestens 24 px (WCAG 2.5.8).
 
 ### 1.0.0 — 2026-10-12
 - Version und Datum der letzten Aktualisierung werden in der App angezeigt (Fußzeile, in 7 Sprachen).
