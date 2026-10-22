@@ -48,7 +48,7 @@ console.log('Pornire și versiune');
   const {ctx, p, errs, net} = await open(1280, 800);
   t('0 pageerror/CSP', errs.length === 0, errs.join('|'));
   t('0 cereri de rețea', net() === 0);
-  t('versiune 1.2.5', await p.evaluate(() => document.querySelector('meta[name=application-version]').content === '1.2.5' && /v 1\.2\.5 · 2026-10-23/.test(document.getElementById('app-version').textContent)));
+  t('versiune 1.2.6', await p.evaluate(() => document.querySelector('meta[name=application-version]').content === '1.2.6' && /v 1\.2\.6 · 2026-10-23/.test(document.getElementById('app-version').textContent)));
   t('kit prezent', await p.evaluate(() => !!(window.FFF && FFF.label && FFF.bundle && FFF.qr)));
   await ctx.close();
 }
@@ -159,7 +159,7 @@ console.log('Kit: copie de siguranță');
   const {ctx, p, errs} = await open(1280, 800);
   await add(p, [U('kit', 1)]);
   const bundle = await p.evaluate(() => FFF.bundle.build());
-  t('bundle include colecțiile', bundle.app === 'cadraj' && /kit/.test(bundle.data['tiktok-fara-cont:v1'] || ''));
+  t('bundle include colecțiile', bundle.app === 'cadraj' && /kit/.test(bundle.data['cadraj.collection'] || ''));
   await p.click('#app-version'); await p.waitForTimeout(300);
   t('dialog „Transparență”', (await p.locator('dialog[open]').count()) === 1);
   t('0 erori', errs.length === 0, errs.join('|'));

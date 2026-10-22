@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.2.5 · **Last updated:** 2026-10-23
+**Version:** 1.2.6 · **Last updated:** 2026-10-23
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -51,7 +51,7 @@ Cadraj is a single-HTML-file app in which you manually add links to an author's 
 
 - The "without borders" kit (`fff-kit`, modules `core, label, bundle, qr`) is pasted into `index.html`: it makes no network requests. The "Transparency" dialog (click on the version) shows the declared network (0 external requests), the `localStorage` keys, the SHA-256 of the file and offers a `.fff.json` backup copy (optionally encrypted with a password, AES-GCM). QR codes are generated and read locally; reading is done only from an image chosen by the user, without the camera.
 
-- Local: the collection (links and notes) is kept in the browser's `localStorage`, under the key `tiktok-fara-cont:v1`. There is no account and no server of the app's own; in the audited code there are no `fetch` calls.
+- Local: the collection (links and notes) is kept in the browser's `localStorage`, under the key `cadraj.collection`. There is no account and no server of the app's own; in the audited code there are no `fetch` calls.
 - Network: the app is not fully offline (without a network, the view shows an explanatory message). When a clip is viewed, the official player `https://www.tiktok.com/player/v1/<id>` is loaded in a `sandbox`ed iframe, so TikTok receives the request (and may apply its own cookies/policies). The profile button and the links to clips open `www.tiktok.com`. There are no other third-party hosts in the code.
 - The app's footer now states explicitly: "no account · no telemetry · no server of its own · playing a clip loads the TikTok player" (the claim "no telemetry" concerns the app itself, not the TikTok player in the iframe).
 - Trademarks: TikTok is a trademark of its owner, used descriptively (the app is not affiliated with TikTok).
@@ -66,6 +66,7 @@ MIT for the app's code and structure — see the `LICENSE` file. Any third-party
 
 ## History / Changelog
 
+- 1.2.6 — 2026-10-23: Storage keys now carry the app prefix (`cadraj.collection`); existing data (saved collection) is migrated automatically at startup, and old `.fff.json` copies can still be imported. fff-kit 1.2.0: unprefixed-storage fixed
 - 1.2.4 — 2026-10-22: fff-kit 1.1.4: touch targets and minimum text size
 - 1.2.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600,000 iterations, anti-clickjacking protection
 - 1.2.1 — 2026-10-22: **fix**: Hungarian interface completed (QR code strings and accessibility panel, including the player-keys hint).

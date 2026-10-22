@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.2.5 · **Zuletzt aktualisiert:** 2026-10-23
+**Version:** 1.2.6 · **Zuletzt aktualisiert:** 2026-10-23
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -51,7 +51,7 @@ Cadraj ist eine App in einer einzigen HTML-Datei, in der du manuell Links zu Tik
 
 - Das Kit „ohne Grenzen“ (`fff-kit`, Module `core, label, bundle, qr`) ist in `index.html` eingebettet: Es stellt keine Netzwerkanfragen. Der Dialog „Transparenz“ (Klick auf die Version) zeigt das deklarierte Netzwerk (0 externe Anfragen), die `localStorage`-Schlüssel, den SHA-256 der Datei und bietet eine `.fff.json`-Sicherungskopie an (optional mit Passwort verschlüsselt, AES-GCM). QR-Codes werden lokal erzeugt und gelesen; das Lesen erfolgt nur aus einem vom Benutzer gewählten Bild, ohne Kamera.
 
-- Lokal: Die Sammlung (Links und Notizen) wird im `localStorage` des Browsers unter dem Schlüssel `tiktok-fara-cont:v1` gespeichert. Es gibt kein Konto und keinen eigenen Server der App; im geprüften Code gibt es keine `fetch`-Aufrufe.
+- Lokal: Die Sammlung (Links und Notizen) wird im `localStorage` des Browsers unter dem Schlüssel `cadraj.collection` gespeichert. Es gibt kein Konto und keinen eigenen Server der App; im geprüften Code gibt es keine `fetch`-Aufrufe.
 - Netzwerk: Die App ist nicht vollständig offline (ohne Netzwerk zeigt die Ansicht eine erklärende Meldung). Beim Anzeigen eines Clips wird in einem iframe mit `sandbox` der offizielle Player `https://www.tiktok.com/player/v1/<id>` geladen, sodass TikTok die Anfrage erhält (und eigene Cookies/Richtlinien anwenden kann). Die Profilschaltfläche und die Links zu Clips öffnen `www.tiktok.com`. Im Code gibt es keine weiteren Drittanbieter-Hosts.
 - Die Fußzeile der App sagt jetzt ausdrücklich: „ohne Konto · ohne Telemetrie · ohne eigenen Server · das Abspielen eines Clips lädt den TikTok-Player“ (die Aussage „ohne Telemetrie“ betrifft die App selbst, nicht den TikTok-Player im iframe).
 - Marken: TikTok ist eine Marke ihres Inhabers und wird beschreibend verwendet (die App ist nicht mit TikTok verbunden).
@@ -66,6 +66,7 @@ MIT für den Code und die Struktur der App — siehe Datei `LICENSE`. Gegebenenf
 
 ## Verlauf / Changelog
 
+- 1.2.6 — 2026-10-23: Die Speicherschlüssel tragen jetzt das App-Präfix (`cadraj.collection`); vorhandene Daten (gespeicherte Sammlung) werden beim Start automatisch migriert, alte `.fff.json`-Kopien lassen sich weiterhin importieren. fff-kit 1.2.0: Speicher ohne Präfix behoben
 - 1.2.4 — 2026-10-22: fff-kit 1.1.4: Touch-Ziele und Mindestschriftgröße
 - 1.2.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking
 - 1.2.1 — 2026-10-22: **Korrektur**: ungarische Oberfläche vervollständigt (QR-Code-Texte und Bedienungshilfen, einschließlich des Hinweises zu den Player-Tasten).

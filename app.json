@@ -2,7 +2,7 @@
   "schema": 1,
   "slug": "cadraj",
   "name": "Cadraj — pentru TikTok, fără cont",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "updated": "2026-10-23",
   "description": "Cadraj — pentru TikTok, fără cont: o „coală de contact” personală pentru clipuri TikTok adăugate manual.",
   "egress": [
@@ -19,10 +19,10 @@
     "localStorage"
   ],
   "storageKeys": [
-    "tiktok-fara-cont:v1"
+    "cadraj.collection"
   ],
-  "sizeBytes": 283145,
-  "sha256": "98740d342c313c0aa7caee0953ab2ad9efeaac1044ec37d6a8eb6f0e9ac65c85",
+  "sizeBytes": 283648,
+  "sha256": "19fe1e538a875aefc617f0fb1e2ddc1428302f773edee60c7d5fea36501deded",
   "csp": {
     "present": true,
     "directives": {

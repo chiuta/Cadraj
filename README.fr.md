@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.2.5 · **Dernière mise à jour :** 2026-10-23
+**Version :** 1.2.6 · **Dernière mise à jour :** 2026-10-23
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -51,7 +51,7 @@ Cadraj est une application en un seul fichier HTML dans laquelle vous ajoutez ma
 
 - Le kit « sans frontières » (`fff-kit`, modules `core, label, bundle, qr`) est collé dans `index.html` : il n'effectue aucune requête réseau. La boîte de dialogue « Transparence » (clic sur la version) montre le réseau déclaré (0 requête externe), les clés de `localStorage`, le SHA-256 du fichier et propose une copie de sauvegarde `.fff.json` (éventuellement chiffrée par mot de passe, AES-GCM). Les codes QR sont générés et lus en local ; la lecture se fait uniquement à partir d'une image choisie par l'utilisateur, sans caméra.
 
-- Local : la collection (liens et notes) est conservée dans le `localStorage` du navigateur, sous la clé `tiktok-fara-cont:v1`. Il n'y a ni compte ni serveur propre à l'application ; dans le code audité, il n'y a aucun appel `fetch`.
+- Local : la collection (liens et notes) est conservée dans le `localStorage` du navigateur, sous la clé `cadraj.collection`. Il n'y a ni compte ni serveur propre à l'application ; dans le code audité, il n'y a aucun appel `fetch`.
 - Réseau : l'application n'est pas entièrement hors ligne (sans réseau, la vue affiche un message explicatif). À l'affichage d'un clip, le lecteur officiel `https://www.tiktok.com/player/v1/<id>` est chargé dans une iframe avec `sandbox`, de sorte que TikTok reçoit la requête (et peut appliquer ses propres cookies/politiques). Le bouton de profil et les liens vers les clips ouvrent `www.tiktok.com`. Il n'y a pas d'autres hôtes tiers dans le code.
 - Le pied de page de l'application dit désormais explicitement : « sans compte · sans télémétrie · sans serveur propre · la lecture d'un clip charge le lecteur TikTok » (l'affirmation « sans télémétrie » concerne l'application elle-même, pas le lecteur TikTok dans l'iframe).
 - Marques : TikTok est une marque de son titulaire, employée à titre descriptif (l'application n'est pas affiliée à TikTok).
@@ -66,6 +66,7 @@ MIT pour le code et la structure de l'application — voir le fichier `LICENSE`.
 
 ## Historique / Changelog
 
+- 1.2.6 — 2026-10-23 : Les clés de stockage portent désormais le préfixe de l'application (`cadraj.collection`) ; les données existantes (collection enregistrée) sont migrées automatiquement au démarrage, et les anciennes copies `.fff.json` restent importables. fff-kit 1.2.0 : stockage sans préfixe corrigé
 - 1.2.4 — 2026-10-22 : fff-kit 1.1.4 : cibles tactiles et taille de texte minimale
 - 1.2.3 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 600 000 itérations, protection anti-clickjacking
 - 1.2.1 — 2026-10-22: **correctif** : interface hongroise complétée (chaînes du code QR et panneau d’accessibilité, y compris l’indication des touches du lecteur).

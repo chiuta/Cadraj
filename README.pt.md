@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.2.5 · **Última atualização:** 2026-10-23
+**Versão:** 1.2.6 · **Última atualização:** 2026-10-23
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -51,7 +51,7 @@ O Cadraj é uma aplicação num único ficheiro HTML em que se adicionam manualm
 
 - O kit «sem fronteiras» (`fff-kit`, módulos `core, label, bundle, qr`) está colado em `index.html`: não faz pedidos de rede. A caixa «Transparência» (clique na versão) mostra a rede declarada (0 pedidos externos), as chaves de `localStorage`, o SHA-256 do ficheiro e oferece uma cópia de segurança `.fff.json` (opcionalmente cifrada com palavra-passe, AES-GCM). Os códigos QR são gerados e lidos localmente; a leitura faz-se apenas a partir de uma imagem escolhida pelo utilizador, sem câmara.
 
-- Local: a coleção (ligações e notas) é guardada no `localStorage` do navegador, sob a chave `tiktok-fara-cont:v1`. Não há conta nem servidor próprio da aplicação; no código verificado não há chamadas `fetch`.
+- Local: a coleção (ligações e notas) é guardada no `localStorage` do navegador, sob a chave `cadraj.collection`. Não há conta nem servidor próprio da aplicação; no código verificado não há chamadas `fetch`.
 - Rede: a aplicação não é totalmente offline (sem rede, a vista mostra uma mensagem explicativa). Ao ver um clipe, é carregado, num iframe com `sandbox`, o leitor oficial `https://www.tiktok.com/player/v1/<id>`, pelo que o TikTok recebe o pedido (e pode aplicar os seus próprios cookies/políticas). O botão de perfil e as ligações para clipes abrem `www.tiktok.com`. Não há outros anfitriões de terceiros no código.
 - O rodapé da aplicação diz agora explicitamente: «sem conta · sem telemetria · sem servidor próprio · a reprodução de um clipe carrega o leitor do TikTok» (a afirmação «sem telemetria» diz respeito à própria aplicação, não ao leitor do TikTok no iframe).
 - Marcas: o TikTok é uma marca do seu titular, usada de forma descritiva (a aplicação não é afiliada ao TikTok).
@@ -66,6 +66,7 @@ MIT para o código e a estrutura da aplicação — ver o ficheiro `LICENSE`. Ev
 
 ## Histórico / Changelog
 
+- 1.2.6 — 2026-10-23: As chaves de armazenamento têm agora o prefixo da aplicação (`cadraj.collection`); os dados existentes (coleção guardada) são migrados automaticamente no arranque e as cópias antigas `.fff.json` continuam a poder ser importadas. fff-kit 1.2.0: armazenamento sem prefixo corrigido
 - 1.2.4 — 2026-10-22: fff-kit 1.1.4: alvos de toque e tamanho mínimo do texto
 - 1.2.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterações, proteção anti-clickjacking
 - 1.2.1 — 2026-10-22: **correção**: interface em húngaro completada (cadeias do código QR e painel de acessibilidade, incluindo a dica das teclas do leitor).

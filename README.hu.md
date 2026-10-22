@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.2.5 · **Utolsó frissítés:** 2026-10-23
+**Verzió:** 1.2.6 · **Utolsó frissítés:** 2026-10-23
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -51,7 +51,7 @@ A Cadraj egyetlen HTML-fájlból álló alkalmazás, amelyben kézzel adod hozz�
 
 - A „határok nélküli” készlet (`fff-kit`, `core, label, bundle, qr` modulok) be van illesztve az `index.html`-be: nem küld hálózati kéréseket. Az „Átláthatóság” párbeszédablak (kattintás a verzióra) megmutatja a deklarált hálózatot (0 külső kérés), a `localStorage` kulcsait, a fájl SHA-256 ujjlenyomatát, és `.fff.json` biztonsági másolatot kínál (opcionálisan jelszóval titkosítva, AES-GCM). A QR-kódokat helyben állítja elő és olvassa be; a beolvasás csak a felhasználó által kiválasztott képből történik, kamera nélkül.
 
-- Helyi: a gyűjtemény (hivatkozások és jegyzetek) a böngésző `localStorage`-ában tárolódik, a `tiktok-fara-cont:v1` kulcs alatt. Nincs fiók és nincs az alkalmazásnak saját szervere; az ellenőrzött kódban nincsenek `fetch` hívások.
+- Helyi: a gyűjtemény (hivatkozások és jegyzetek) a böngésző `localStorage`-ában tárolódik, a `cadraj.collection` kulcs alatt. Nincs fiók és nincs az alkalmazásnak saját szervere; az ellenőrzött kódban nincsenek `fetch` hívások.
 - Hálózat: az alkalmazás nem teljesen offline (hálózat nélkül a nézet magyarázó üzenetet mutat). Egy klip megtekintésekor egy `sandbox` attribútumú iframe-ben betöltődik a hivatalos `https://www.tiktok.com/player/v1/<id>` lejátszó, így a TikTok megkapja a kérést (és saját sütiket/szabályzatokat alkalmazhat). A profilgomb és a klipekre mutató hivatkozások a `www.tiktok.com` oldalt nyitják meg. A kódban nincsenek más külső gazdák.
 - Az alkalmazás lábléce mostantól kifejezetten kimondja: „fiók nélkül · telemetria nélkül · saját szerver nélkül · egy klip lejátszása betölti a TikTok lejátszóját” (a „telemetria nélkül” állítás magára az alkalmazásra vonatkozik, nem az iframe-ben lévő TikTok-lejátszóra).
 - Védjegyek: a TikTok tulajdonosának védjegye, leíró jelleggel használva (az alkalmazás nem áll kapcsolatban a TikTokkal).
@@ -66,6 +66,7 @@ MIT az alkalmazás kódjára és szerkezetére — lásd a `LICENSE` fájlt. A f
 
 ## Előzmények / Changelog
 
+- 1.2.6 — 2026-10-23: A tárolókulcsok mostantól az alkalmazás előtagját viselik (`cadraj.collection`); a meglévő adatok (mentett gyűjtemény) indításkor automatikusan átkerülnek, a régi `.fff.json` másolatok továbbra is importálhatók. fff-kit 1.2.0: előtag nélküli tárolás javítva
 - 1.2.4 — 2026-10-22: fff-kit 1.1.4: érintési célpontok és minimális szövegméret
 - 1.2.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iteráció, clickjacking elleni védelem
 - 1.2.1 — 2026-10-22: **javítás**: a magyar felület kiegészítve (QR-kód szövegei és a kisegítő lehetőségek panel, a lejátszó billentyűinek súgójával együtt).
