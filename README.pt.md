@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.2.2 · **Última atualização:** 2026-10-22
+**Versão:** 1.2.3 · **Última atualização:** 2026-10-22
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,6 +66,7 @@ MIT para o código e a estrutura da aplicação — ver o ficheiro `LICENSE`. Ev
 
 ## Histórico / Changelog
 
+- 1.2.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterações, proteção anti-clickjacking
 - 1.2.1 — 2026-10-22: **correção**: interface em húngaro completada (cadeias do código QR e painel de acessibilidade, incluindo a dica das teclas do leitor).
 - 1.1.0 — 2026-10-14: código QR para coleções, modo de acessibilidade, leitor com foco preso, kit «sem fronteiras». Testes: `tests/fff-r8.test.mjs`.
 
