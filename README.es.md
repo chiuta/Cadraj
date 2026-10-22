@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.2.3 · **Última actualización:** 2026-10-22
+**Versión:** 1.2.4 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,6 +66,7 @@ MIT para el código y la estructura de la aplicación — véase el archivo `LIC
 
 ## Historial / Changelog
 
+- 1.2.4 — 2026-10-22: fff-kit 1.1.4: objetivos táctiles y tamaño mínimo de texto
 - 1.2.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iteraciones, protección anti-clickjacking
 - 1.2.1 — 2026-10-22: **corrección**: interfaz en húngaro completada (cadenas del código QR y panel de accesibilidad, incluida la pista de las teclas del reproductor).
 - 1.1.0 — 2026-10-14: código QR para colecciones, modo de accesibilidad, reproductor con foco atrapado, kit «sin fronteras». Pruebas: `tests/fff-r8.test.mjs`.
