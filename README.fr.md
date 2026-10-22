@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.2.0 · **Dernière mise à jour :** 2026-10-19
+**Version :** 1.2.1 · **Dernière mise à jour :** 2026-10-22
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,6 +66,7 @@ MIT pour le code et la structure de l'application — voir le fichier `LICENSE`.
 
 ## Historique / Changelog
 
+- 1.2.1 — 2026-10-22: **correctif** : interface hongroise complétée (chaînes du code QR et panneau d’accessibilité, y compris l’indication des touches du lecteur).
 - 1.1.0 — 2026-10-14 : code QR pour les collections, mode d'accessibilité, lecteur à focus piégé, kit « sans frontières ». Tests : `tests/fff-r8.test.mjs`.
 
 ### 1.0.0 — 2026-10-12

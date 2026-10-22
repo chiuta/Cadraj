@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.2.0 · **Ultima actualizare:** 2026-10-19
+**Versiune:** 1.2.1 · **Ultima actualizare:** 2026-10-22
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,6 +66,7 @@ MIT pentru codul și structura aplicației — vezi fișierul `LICENSE`. Eventua
 
 ## Istoric / Changelog
 
+- 1.2.1 — 2026-10-22: **remediere**: interfața în maghiară completată (șirurile pentru codul QR și panoul de accesibilitate, inclusiv indiciul pentru tastele playerului).
 - 1.1.0 — 2026-10-14: cod QR pentru colecții, mod de accesibilitate, player cu focus prins, kit „fără frontiere”. Teste: `tests/fff-r8.test.mjs`.
 
 ### 1.0.0 — 2026-10-12
