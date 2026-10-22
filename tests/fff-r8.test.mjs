@@ -48,7 +48,7 @@ console.log('Pornire și versiune');
   const {ctx, p, errs, net} = await open(1280, 800);
   t('0 pageerror/CSP', errs.length === 0, errs.join('|'));
   t('0 cereri de rețea', net() === 0);
-  t('versiune 1.2.4', await p.evaluate(() => document.querySelector('meta[name=application-version]').content === '1.2.4' && /v 1\.2\.4 · 2026-10-22/.test(document.getElementById('app-version').textContent)));
+  t('versiune 1.2.5', await p.evaluate(() => document.querySelector('meta[name=application-version]').content === '1.2.5' && /v 1\.2\.5 · 2026-10-23/.test(document.getElementById('app-version').textContent)));
   t('kit prezent', await p.evaluate(() => !!(window.FFF && FFF.label && FFF.bundle && FFF.qr)));
   await ctx.close();
 }
