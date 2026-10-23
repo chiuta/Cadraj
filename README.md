@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.2.6 · **Last updated:** 2026-10-23
+**Version:** 1.2.7 · **Last updated:** 2026-10-23
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,6 +66,7 @@ MIT for the app's code and structure — see the `LICENSE` file. Any third-party
 
 ## History / Changelog
 
+- 1.2.7 — 2026-10-23: **fix**: a link is accepted only if it starts with a TikTok address (`evil.com/tiktok.com/@x/video/…` and over-long ids are rejected); imported `addedAt` is validated as a number
 - 1.2.6 — 2026-10-23: Storage keys now carry the app prefix (`cadraj.collection`); existing data (saved collection) is migrated automatically at startup, and old `.fff.json` copies can still be imported. fff-kit 1.2.0: unprefixed-storage fixed
 - 1.2.4 — 2026-10-22: fff-kit 1.1.4: touch targets and minimum text size
 - 1.2.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600,000 iterations, anti-clickjacking protection

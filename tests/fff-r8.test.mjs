@@ -48,8 +48,21 @@ console.log('Pornire și versiune');
   const {ctx, p, errs, net} = await open(1280, 800);
   t('0 pageerror/CSP', errs.length === 0, errs.join('|'));
   t('0 cereri de rețea', net() === 0);
-  t('versiune 1.2.6', await p.evaluate(() => document.querySelector('meta[name=application-version]').content === '1.2.6' && /v 1\.2\.6 · 2026-10-23/.test(document.getElementById('app-version').textContent)));
+  t('versiune 1.2.7', await p.evaluate(() => document.querySelector('meta[name=application-version]').content === '1.2.7' && /v 1\.2\.7 · 2026-10-23/.test(document.getElementById('app-version').textContent)));
   t('kit prezent', await p.evaluate(() => !!(window.FFF && FFF.label && FFF.bundle && FFF.qr)));
+  await ctx.close();
+}
+
+console.log('Linkuri: ancorare pe domeniul TikTok (1.2.7)');
+{
+  const {ctx, p, errs} = await open(1280, 800);
+  const good = ['https://www.tiktok.com/@ok.user/video/7123456789012345678', 'tiktok.com/@ok.user/video/7123456789012345679?is_from_webapp=1', 'https://m.tiktok.com/@ok.user/photo/7123456789012345680/'];
+  const bad = ['https://evil.example/tiktok.com/@x/video/7123456789012345678', 'https://nottiktok.com/@x/video/7123456789012345678', 'https://www.tiktok.com.evil.example/@x/video/7123456789012345678', 'https://www.tiktok.com/@x/video/71234567890123456789012345678'];
+  for (const g of good) { await add(p, [g]); }
+  t('linkuri valide acceptate', (await p.locator('.frame-card').count()) === 3, String(await p.locator('.frame-card').count()));
+  for (const b of bad) { await add(p, [b]); }
+  t('linkuri străine/prea lungi respinse', (await p.locator('.frame-card').count()) === 3 && (await p.locator('.collection').count()) === 1, String(await p.locator('.collection').count()));
+  t('0 erori', errs.length === 0, errs.join('|'));
   await ctx.close();
 }
 
