@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.2.6 · **Ultima actualizare:** 2026-10-23
+**Versiune:** 1.2.7 · **Ultima actualizare:** 2026-10-23
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,6 +66,7 @@ MIT pentru codul și structura aplicației — vezi fișierul `LICENSE`. Eventua
 
 ## Istoric / Changelog
 
+- 1.2.7 — 2026-10-23: **corecție**: un link este acceptat doar dacă începe cu o adresă TikTok (`evil.com/tiktok.com/@x/video/…` și id-urile prea lungi sunt respinse); `addedAt` importat este validat ca număr
 - 1.2.6 — 2026-10-23: Cheile de stocare au acum prefixul aplicației (`cadraj.collection`); datele existente (colecția salvată) se migrează automat la pornire, iar copiile vechi `.fff.json` se pot importa în continuare. fff-kit 1.2.0: stocare fără prefix remediată
 - 1.2.4 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim
 - 1.2.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterații, protecție anti-clickjacking
