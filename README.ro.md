@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.2.7 · **Ultima actualizare:** 2026-10-26
+**Versiune:** 2.0.0 · **Ultima actualizare:** 2026-10-26
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -28,6 +28,7 @@ Cadraj este o aplicație dintr-un singur fișier HTML în care adaugi manual lin
 - Vizualizare mărită (lightbox) cu navigare ‹ / ›, tastele Săgeată stânga / Săgeată dreapta și Escape pentru închidere.
 - Export și import al colecției ca fișier JSON; „Șterge tot".
 - Interfață în 8 limbi: RO, EN, FR, IT, ES, PT, DE, HU.
+- **Caiete de monitorizare (2.0.0):** colecții tematice de clipuri cu fișă de analiză (autor, dată indicată, dată calculată din ID, sursă, rezumat), listă de verificare (căutare inversă, context, dată) și citate legate de secunda din clip; export/copiere Markdown cu frontmatter. În player, „citat rapid” (secunda scrisă manual; „secunda curentă” și „sari la secundă” folosesc mesajele playerului TikTok, în regim best-effort, netestate cu playerul real). Același clip nu poate apărea în două colecții (cheie = ID).
 
 ## Funcții noi (v1.1.0)
 

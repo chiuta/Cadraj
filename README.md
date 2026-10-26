@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.2.7 · **Last updated:** 2026-10-26
+**Version:** 2.0.0 · **Last updated:** 2026-10-26
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -28,6 +28,7 @@ Cadraj is a single-HTML-file app in which you manually add links to an author's 
 - Enlarged view (lightbox) with ‹ / › navigation, Left arrow / Right arrow keys and Escape to close.
 - Export and import of the collection as a JSON file; "Delete all".
 - Interface in 8 languages: RO, EN, FR, IT, ES, PT, DE, HU.
+- **Monitoring notebooks (2.0.0):** thematic clip collections with an analysis sheet (author, stated date, date computed from the ID, source, summary), a verification checklist (reverse search, context, date) and quotes tied to the second in the clip; Markdown export/copy with frontmatter. In the player, a “quick quote” (second typed by hand; “use current second” and “jump to second” rely on TikTok player messages, best-effort, not tested against the live player). The same clip cannot appear in two collections (key = ID).
 
 ## New features (v1.1.0)
 
