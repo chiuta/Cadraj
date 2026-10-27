@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 2.1.0 · **Last updated:** 2026-10-27
+**Version:** 2.2.0 · **Last updated:** 2026-10-27
 
 **Status:** stable · **Offline:** the collection, notes and exports work offline; playing clips and opening profiles need internet (official TikTok player and www.tiktok.com).
 
@@ -32,6 +32,7 @@ Cadraj is a single-HTML-file app in which you manually add links to an author's 
 - Interface in 8 languages: RO, EN, FR, IT, ES, PT, DE, HU.
 - **Monitoring notebooks (2.0.0):** thematic clip collections with an analysis sheet (author, stated date, date computed from the ID, source, summary), a verification checklist (reverse search, context, date) and quotes tied to the second in the clip; Markdown export/copy with frontmatter. In the player, a “quick quote” (second typed by hand; “use current second” and “jump to second” rely on TikTok player messages, best-effort, not tested against the live player). The same clip cannot appear in two collections (key = ID).
 - **Notes and export (2.1.0):** each clip keeps a note of up to 140 characters (also shown in the player). New buttons: “Export notes (Markdown)” (per author: link, ✓ seen/○ unseen, date added, note; with frontmatter) and “Export (CSV)” (`user,id,kind,url,note,seen,added`; UTF-8 with BOM for spreadsheets, cells starting with `= + - @` are neutralised against formula injection). Both are local files; nothing is sent anywhere.
+- **Notes in every data export (checked in 2.2.0):** JSON, Markdown and CSV already carried each clip's note; 2.2.0 adds an explicit test and an optional **"with notes"** checkbox next to "Copy links": when ticked, each copied line is `link<TAB>note` (notes with several spaces or line breaks are flattened to one line; clips without a note stay a plain link). The QR code still carries **no notes** by design (size and privacy). Label in 8 languages (FR/IT/ES/PT/DE/HU machine-translated). The 140-character limit is unchanged.
 - **Data and TikTok (2.1.0):** a new panel “What happens to your data and what TikTok learns” spells out what stays in the browser, what TikTok receives when a frame is played (IP address, usual browser data, the clip identifier, usually the address of the hosting site; it may use its own cookies and recognise you if you are signed in to TikTok in the same browser) and what it does not receive (notes, collections, marks, other clips). Translations of the new texts into FR/IT/ES/PT/DE/HU are automatic and **not verified by native speakers**.
 
 ## New features (v1.1.0)
@@ -71,6 +72,7 @@ MIT for the app's code and structure — see the `LICENSE` file. Any third-party
 
 ## History / Changelog
 
+- 2.2.0 — 2026-10-27: optional "with notes" in "Copy links"; test that notes are in JSON/Markdown/CSV (`tests/copy-notes.test.mjs`). Previously: v2.1.0.
 - 2.1.0 — 2026-10-27: notes + Markdown/CSV export, “data and TikTok” panel, longer description, status/offline lines, `CHANGELOG.md`. Previously: v2.0.0.
 
 - 1.2.6 — 2026-10-23: Storage keys now carry the app prefix (`cadraj.collection`); existing data (saved collection) is migrated automatically at startup, and old `.fff.json` copies can still be imported. fff-kit 1.2.0: unprefixed-storage fixed

@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 2.1.0 · **Ultima actualizare:** 2026-10-27
+**Versiune:** 2.2.0 · **Ultima actualizare:** 2026-10-27
 
 **Stare:** stabil · **Offline:** colecția, notițele și exporturile merg offline; redarea clipurilor și deschiderea profilurilor cer internet (playerul oficial TikTok și www.tiktok.com).
 
@@ -32,6 +32,7 @@ Cadraj este o aplicație dintr-un singur fișier HTML în care adaugi manual lin
 - Interfață în 8 limbi: RO, EN, FR, IT, ES, PT, DE, HU.
 - **Caiete de monitorizare (2.0.0):** colecții tematice de clipuri cu fișă de analiză (autor, dată indicată, dată calculată din ID, sursă, rezumat), listă de verificare (căutare inversă, context, dată) și citate legate de secunda din clip; export/copiere Markdown cu frontmatter. În player, „citat rapid” (secunda scrisă manual; „secunda curentă” și „sari la secundă” folosesc mesajele playerului TikTok, în regim best-effort, netestate cu playerul real). Același clip nu poate apărea în două colecții (cheie = ID).
 - **Notițe și export (2.1.0):** fiecare clip păstrează o notiță de cel mult 140 de caractere (afișată și în player). Butoane noi: „Exportă note (Markdown)” (pe autor: link, ✓ văzut/○ nevăzut, data adăugării, notiță; cu frontmatter) și „Exportă (CSV)” (`user,id,kind,url,note,seen,added`; UTF-8 cu BOM pentru foi de calcul, celulele care încep cu `= + - @` sunt neutralizate împotriva injecției de formule). Ambele sunt fișiere locale; nimic nu se trimite nicăieri.
+- **Notițe în toate exporturile de date (verificat în 2.2.0):** JSON, Markdown și CSV purtau deja notița fiecărui clip; 2.2.0 adaugă un test explicit și o casetă opțională **„cu notițe”** lângă „Copiază linkurile”: când e bifată, fiecare linie copiată este `link<TAB>notiță` (notițele cu spații multiple sau rupturi de rând sunt aplatizate pe o linie; clipurile fără notiță rămân doar link). Codul QR nu conține **niciodată notițe**, intenționat (dimensiune și confidențialitate). Etichetă în 8 limbi (FR/IT/ES/PT/DE/HU traduse automat). Limita de 140 de caractere rămâne neschimbată.
 - **Date și TikTok (2.1.0):** un panou nou „Ce se întâmplă cu datele tale și ce află TikTok” spune ce rămâne în browser, ce primește TikTok când redai un cadru (adresa IP, datele obișnuite ale browserului, identificatorul clipului, de regulă adresa sitului găzduitor; poate folosi propriile cookie-uri și te poate recunoaște dacă ești autentificat pe TikTok în același browser) și ce nu primește (notițe, colecții, marcaje, alte clipuri). Traducerile noilor texte în FR/IT/ES/PT/DE/HU sunt automate și **neverificate de vorbitori nativi**.
 
 ## Funcții noi (v1.1.0)
@@ -71,6 +72,7 @@ MIT pentru codul și structura aplicației — vezi fișierul `LICENSE`. Eventua
 
 ## Istoric / Changelog
 
+- 2.2.0 — 2026-10-27: „cu notițe” opțional la „Copiază linkurile”; test că notițele sunt în JSON/Markdown/CSV (`tests/copy-notes.test.mjs`). Anterior: v2.1.0.
 - 2.1.0 — 2026-10-27: notițe + export Markdown/CSV, panou „date și TikTok”, descriere extinsă, linii Stare/Offline, `CHANGELOG.md`. Anterior: v2.0.0.
 
 - 1.2.6 — 2026-10-23: Cheile de stocare au acum prefixul aplicației (`cadraj.collection`); datele existente (colecția salvată) se migrează automat la pornire, iar copiile vechi `.fff.json` se pot importa în continuare. fff-kit 1.2.0: stocare fără prefix remediată
