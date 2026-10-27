@@ -1,4 +1,4 @@
-// Teste v2.0.0: caiete de monitorizare (fișă de analiză, citate legate de secundă, checklist, export Markdown, dedupe pe ID).
+// Teste v2.1.0: caiete de monitorizare (fișă de analiză, citate legate de secundă, checklist, export Markdown, dedupe pe ID).
 import {createRequire as __fffCR} from 'node:module';
 import {readFileSync as __fffRF} from 'node:fs';
 import {createRequire} from 'module';
