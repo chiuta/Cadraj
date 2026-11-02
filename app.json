@@ -2,8 +2,8 @@
   "schema": 1,
   "slug": "cadraj",
   "name": "Cadraj — pentru TikTok, fără cont",
-  "version": "2.2.0",
-  "updated": "2026-10-27",
+  "version": "2.2.1",
+  "updated": "2026-11-02",
   "description": "Cadraj — pentru TikTok, fără cont: o „coală de contact” personală pentru clipuri TikTok adăugate manual, grupate pe autor, cu notițe pe cadre și export JSON/Markdown/CSV. Colecțiile rămân în browser; la redarea unui clip se încarcă playerul oficial TikTok, iar TikTok primește atunci IP-ul și identificatorul clipului.",
   "egress": [
     {
@@ -21,8 +21,8 @@
   "storageKeys": [
     "cadraj.collection"
   ],
-  "sizeBytes": 444567,
-  "sha256": "a19f9d72bbd374aa730d6a348a6400fd2d72ed8b9dc532598a864875939d6176",
+  "sizeBytes": 444684,
+  "sha256": "eaf4acfb1fca228848fc6d4d178cba5455a6ae621f3b842d3990559d2cd43ca7",
   "csp": {
     "present": true,
     "directives": {
