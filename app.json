@@ -21,8 +21,8 @@
   "storageKeys": [
     "cadraj.collection"
   ],
-  "sizeBytes": 347919,
-  "sha256": "f4476dfb55105e88e2b889cfc4463d915e1bccce4e217233289e155434648285",
+  "sizeBytes": 444567,
+  "sha256": "a19f9d72bbd374aa730d6a348a6400fd2d72ed8b9dc532598a864875939d6176",
   "csp": {
     "present": true,
     "directives": {
@@ -63,7 +63,10 @@
       "dialog",
       "label",
       "bundle",
-      "qr"
+      "qr",
+      "p2p",
+      "sync",
+      "history"
     ]
   },
   "kit": {
@@ -74,7 +77,10 @@
       "dialog",
       "label",
       "bundle",
-      "qr"
+      "qr",
+      "p2p",
+      "sync",
+      "history"
     ]
   },
   "selfSerializing": false
