@@ -2,6 +2,10 @@
 
 Format SemVer (MAJOR.MINOR.PATCH).
 
+## 2.2.8 — 2026-11-08
+
+- Nou: avertisment în panoul de filtrare că un clip șters de autor lasă doar linkul, autorul și notița (aplicația nu face fetch de titlu/miniatură) — descrie clipul în notiță; 8 limbi.
+
 ## 2.2.5 — 2026-11-03
 
 Etapa 7 (audit axe): butonul A/B al motorului comun are acum numele accesibil „A/B — …”, care conține textul vizibil (regula label-content-name-mismatch).
