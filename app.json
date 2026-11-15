@@ -18,18 +18,19 @@
     "serviceWorker",
     "localStorage",
     "Web Crypto",
+    "WebGL",
     "BroadcastChannel"
   ],
   "storageKeys": [
     "cadraj.collection"
   ],
-  "sizeBytes": 572260,
-  "sha256": "eeba294e8c3c51a5e145dc14b15f471974e2a90425e6ddb5eeb7cb50c74d0cd1",
+  "sizeBytes": 624299,
+  "sha256": "4d587411bf1a6d8f2a9ce2a0ce927fe6939e05717e5eec79c1fd1e74d831bb1c",
   "csp": {
     "present": true,
     "directives": {
       "default-src": "'none'",
-      "script-src": "sha256×6",
+      "script-src": "sha256×7",
       "style-src": "'unsafe-inline'",
       "img-src": "'self' data: blob:",
       "frame-src": "https://www.tiktok.com",
