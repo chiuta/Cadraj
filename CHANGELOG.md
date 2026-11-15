@@ -2,6 +2,10 @@
 
 Format SemVer (MAJOR.MINOR.PATCH).
 
+## 2.2.13 — 2026-11-15
+
+- Nou: texturi fractale hiper-detaliate (fff-texturi 1.1.2) — fundalul și suprafețele mari (carduri, panouri, antete, butoane; filele și dialogurile ascunse la încărcare, când se deschid) primesc un material generat local (WebGL2, fără rețea și fără imagini), care se repetă fără cusătură; culorile aplicației rămân ale ei. Se oprește din dialogul „Transparență” sau cu `?notex=1`.
+
 ## 2.2.8 — 2026-11-08
 
 - Nou: avertisment în panoul de filtrare că un clip șters de autor lasă doar linkul, autorul și notița (aplicația nu face fetch de titlu/miniatură) — descrie clipul în notiță; 8 limbi.
